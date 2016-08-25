@@ -1,0 +1,988 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Takenet.MessagingHub.Client</name>
+    </assembly>
+    <members>
+        <member name="M:Takenet.MessagingHub.Client.Extensions.Broadcast.BroadcastExtension.#ctor(Takenet.MessagingHub.Client.Sender.IMessagingHubSender)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Takenet.MessagingHub.Client.Extensions.Broadcast.BroadcastExtension"/> class.
+            </summary>
+            <param name="sender">The sender.</param>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.Extensions.Broadcast.IBroadcastExtension">
+            <summary>
+            Provide a distribution list management service for message broadcasting.
+            </summary>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Extensions.Broadcast.IBroadcastExtension.CreateDistributionListAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Creates a distribution list with the specified name.
+            </summary>
+            <param name="listName">Name of the list.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Extensions.Broadcast.IBroadcastExtension.DeleteDistributionListAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes an existing distribution list.
+            </summary>
+            <param name="listName">Name of the list.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Extensions.Broadcast.IBroadcastExtension.AddRecipientAsync(System.String,Lime.Protocol.Identity,System.Threading.CancellationToken)">
+            <summary>
+            Adds a recipient identity to an existing distribution list.
+            </summary>
+            <param name="listName">Name of the list.</param>
+            <param name="recipientIdentity">The recipient identity.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Extensions.Broadcast.IBroadcastExtension.DeleteRecipientAsync(System.String,Lime.Protocol.Identity,System.Threading.CancellationToken)">
+            <summary>
+            Deletes a recipient identity from an existing distribution list.
+            </summary>
+            <param name="listName">Name of the list.</param>
+            <param name="recipientIdentity">The recipient identity.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Extensions.Broadcast.IBroadcastExtension.GetListIdentity(System.String)">
+            <summary>
+            Gets the list identity from a name.
+            </summary>
+            <param name="listName">Name of the list.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Extensions.Broadcast.IBroadcastExtension.SendMessageAsync(System.String,Lime.Protocol.Document,System.Threading.CancellationToken)">
+            <summary>
+            Sends a message to a distribution list with the specified content.
+            </summary>
+            <param name="listName">Name of the list.</param>
+            <param name="content">The content.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.Extensions.Directory.IDirectoryExtension">
+            <summary>
+            Provides a service for querying user informations in the public account directory.
+            </summary>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Extensions.Directory.IDirectoryExtension.GetDirectoryAccountAsync(Lime.Protocol.Identity,System.Threading.CancellationToken)">
+            <summary>
+            Gets an account information from the directory.
+            </summary>
+            <param name="identity">The identity to query.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.Extensions.Bucket.IBucketExtension">
+            <summary>
+            Allow the storage of documents in the server bucket resource.
+            </summary>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Extensions.Bucket.IBucketExtension.GetAsync``1(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets an existing document from the bucket by the id.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="id">The identifier.</param>        
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Extensions.Bucket.IBucketExtension.SetAsync``1(System.String,``0,System.TimeSpan,System.Threading.CancellationToken)">
+            <summary>
+            Stores a document in the bucket.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="id">The identifier.</param>
+            <param name="document">The document.</param>
+            <param name="expiration">The expiration.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Extensions.Bucket.IBucketExtension.DeleteAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes a document from the bucket.
+            </summary>
+            <param name="id">The identifier.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.Extensions.Scheduler.ISchedulerExtension">
+            <summary>
+            Defines a service that allows the scheduling of messages for sending.
+            </summary>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Extensions.Scheduler.ISchedulerExtension.ScheduleMessageAsync(Lime.Protocol.Message,System.DateTimeOffset,System.Threading.CancellationToken)">
+            <summary>
+            Schedules a message to the specified date.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="when">The when.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.Extensions.Session.ISessionManager">
+            <summary>
+            Defines a session management service.
+            </summary>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Extensions.Session.ISessionManager.GetSessionAsync(Lime.Protocol.Node,System.Threading.CancellationToken)">
+            <summary>
+            Gets an existing session for the specified node.
+            </summary>
+            <param name="node">The node.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Extensions.Session.ISessionManager.ClearSessionAsync(Lime.Protocol.Node,System.Threading.CancellationToken)">
+            <summary>
+            Clears an existing session for a node, removing all associated variable and states.
+            </summary>
+            <param name="node">The node.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Extensions.Session.ISessionManager.AddVariableAsync(Lime.Protocol.Node,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Adds an variable to a node session. If the session doesn't exists, it will be created.
+            </summary>
+            <param name="node">The node.</param>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Extensions.Session.ISessionManager.GetVariableAsync(Lime.Protocol.Node,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets an existing variable from a node session.
+            </summary>
+            <param name="node">The node.</param>
+            <param name="key">The key.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Extensions.Session.ISessionManager.RemoveVariableAsync(Lime.Protocol.Node,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Removes an existing variable from a node session.
+            </summary>
+            <param name="node">The node.</param>
+            <param name="key">The key.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.Extensions.Session.NavigationSession">
+            <summary>
+            Defines a session storage document.
+            </summary>
+            <seealso cref="T:Lime.Protocol.Document" />
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Extensions.Session.NavigationSession.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Takenet.MessagingHub.Client.Extensions.Session.NavigationSession"/> class.
+            </summary>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Extensions.Session.NavigationSession.Creation">
+            <summary>
+            Gets or sets the session creation date.
+            </summary>
+            <value>
+            The creation.
+            </value>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Extensions.Session.NavigationSession.Variables">
+            <summary>
+            Gets or sets the session variables.
+            </summary>
+            <value>
+            The variables.
+            </value>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.Host.Application">
+            <summary>
+            Defines the configuration type for the application.json file.
+            </summary>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.Application.Identifier">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.Application.Instance">
+            <summary>
+            Gets or sets the instance name for the connection.
+            </summary>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.Application.Domain">
+            <summary>
+            Gets or sets the domain.
+            </summary>
+            <value>
+            The domain.
+            </value>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.Application.HostName">
+            <summary>
+            Gets or sets the name of the host.
+            </summary>
+            <value>
+            The name of the host.
+            </value>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.Application.AccessKey">
+            <summary>
+            Gets or sets the access key.
+            </summary>
+            <value>
+            The access key.
+            </value>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.Application.Password">
+            <summary>
+            Gets or sets the password.
+            </summary>
+            <value>
+            The password.
+            </value>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.Application.SendTimeout">
+            <summary>
+            Gets or sets the send timeout, in milliseconds.
+            </summary>
+            <value>
+            The send timeout.
+            </value>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.Application.MessageReceivers">
+            <summary>
+            Gets or sets the receivers.
+            </summary>
+            <value>
+            The receivers.
+            </value>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.Application.NotificationReceivers">
+            <summary>
+            Gets or sets the receivers.
+            </summary>
+            <value>
+            The receivers.
+            </value>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.Application.StartupType">
+            <summary>
+            Gets or sets the type for the startup .NET type. It must implement <see cref="T:Takenet.MessagingHub.Client.Listener.IStartable"/> or <see cref="T:Takenet.MessagingHub.Client.Host.IFactory`1"/>.
+            The start is called before the start of the sender.
+            The type constructor must be parameterless or receive only a <see cref="T:System.IServiceProvider"/> instance plus a <see cref="!:IDictionary&lt;string, object&gt;"/> settings instance.
+            </summary>
+            <value>
+            The type of the startup.
+            </value>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.Application.ServiceProviderType">
+            <summary>
+            Gets or sets a type to be used as a service provider for dependency injection. It must be an implementation of <see cref="T:System.IServiceProvider"/>.
+            </summary>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.Application.SessionEncryption">
+            <summary>
+            Gets or sets the session encryption mode to be used
+            </summary>
+            <value>
+            The encryption mode.
+            </value>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.Application.SessionCompression">
+            <summary>
+            Gets or sets the session compression mode to be used
+            </summary>
+            <value>
+            The compression mode.
+            </value>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.Application.SchemaVersion">
+            <summary>
+            Identifies the version of the application.json schema. It is used to validate if a package is not outdated.
+            </summary>
+            <value>
+            The schema application.json version
+            </value>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.Application.RoutingRule">
+            <summary>
+            Informs the routing rule used to connect
+            </summary>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.Application.Throughput">
+            <summary>
+            Informs the throughput interval between envelopes
+            </summary>
+        </member>
+        <member name="F:Takenet.MessagingHub.Client.Host.Application.ExpectedSchemaVersion">
+            <summary>
+            Indicates which schema version must be used to publish new applications
+            </summary>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Host.Application.ParseFromJson(System.String)">
+            <summary>
+            Creates an instance of <see cref="T:Takenet.MessagingHub.Client.Host.Application"/> from a JSON input.
+            </summary>
+            <param name="json">The json.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Host.Application.ParseFromJsonFile(System.String)">
+            <summary>
+            Creates an instance of <see cref="T:Takenet.MessagingHub.Client.Host.Application" /> from a JSON file.
+            </summary>
+            <param name="filePath">The path.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.ApplicationReceiver.Priority">
+            <summary>
+            Gets or sets the receiver priority related to the others. 
+            Lower values have higher priority. 
+            This value can be repeated among receivers. 
+            In this cases, the receivers are evaluated in parallel.
+            </summary>
+            <value>
+            The priority.
+            </value>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.ApplicationReceiver.State">
+            <summary>
+            Gets or sets the required caller state to ensure the validity of the receiver.
+            </summary>
+            <value>
+            The state filter.
+            </value>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.ApplicationReceiver.OutState">
+            <summary>
+            Gets or sets the state of the caller to be set after the execution of the receiver.
+            </summary>
+            <value>
+            The state to be set.
+            </value>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.ApplicationReceiver.Type">
+            <summary>
+            Gets or sets the receiver .NET type. 
+            The type constructor must be parameterless or receive only a <see cref="T:System.IServiceProvider"/> instance plus a <see cref="T:System.Collections.Generic.IDictionary`2"/> settings instance.
+            </summary>
+            <value>
+            The type of the receiver.
+            </value>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.ApplicationReceiver.Sender">
+            <summary>
+            Gets or sets the sender filter. It can be a regex.
+            </summary>
+            <value>
+            From.
+            </value>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.ApplicationReceiver.Destination">
+            <summary>
+            Gets or sets the destination filter. It can be a regex.
+            </summary>
+            <value>
+            From.
+            </value>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.ApplicationReceiver.Response">
+            <summary>
+            Gets or sets the message to be sent in case of the occurrences of the specified envelope filter.
+            This overrides the receiver type definition, if present.
+            </summary>
+            <value>
+            The response.
+            </value>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Host.Bootstrapper.StartAsync(Takenet.MessagingHub.Client.Host.Application,System.Boolean)">
+            <summary>
+            Creates ans starts an application with the given settings.
+            </summary>
+            <param name="application">The application instance. If not defined, the class will look for an application.json file in the current directory.</param>
+            <param name="loadAssembliesFromWorkingDirectory">if set to <c>true</c> indicates to the bootstrapper to load all assemblies from the current working directory.</param>
+            <returns></returns>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+            <exception cref="T:System.ArgumentException">At least an access key or password must be defined</exception>
+            <exception cref="T:System.IO.FileNotFoundException">Could not find the 'application.json' file</exception>
+            <exception cref="T:System.ArgumentException">At least an access key or password must be defined</exception>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.DocumentDefinition.MediaType">
+            <summary>
+            Gets or sets the media type of the message.
+            </summary>
+            <value>
+            The type of the media.
+            </value>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.DocumentDefinition.PlainContent">
+            <summary>
+            Gets or sets the plain content definition of the message.
+            This value is exclusive with the <see cref="P:Takenet.MessagingHub.Client.Host.DocumentDefinition.JsonContent"/> property.
+            </summary>
+            <value>
+            The content of the plain.
+            </value>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.DocumentDefinition.JsonContent">
+            <summary>
+            Gets or sets the JSON content definition of the message.
+            This value is exclusive with the <see cref="P:Takenet.MessagingHub.Client.Host.DocumentDefinition.PlainContent"/> property.
+            </summary>
+            <value>
+            The content of the json.
+            </value>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.Host.IFactory`1">
+            <summary>
+            Defines a factory for instance of <see cref="!:T"/>.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Host.IFactory`1.CreateAsync(System.IServiceProvider,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Creates the asynchronous.
+            </summary>
+            <param name="serviceProvider">A service provider to allow resolving references.</param>
+            <param name="settings">A settings dictionary.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.Host.IServiceContainer">
+            <summary>
+            Defines a service container that allows the registration of service type instances.
+            </summary>
+            <seealso cref="T:System.IServiceProvider" />
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Host.IServiceContainer.RegisterService(System.Type,System.Object)">
+            <summary>
+            Registers the service instance.
+            </summary>
+            <param name="serviceType">Type of the service.</param>
+            <param name="instance">The instance.</param>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.MessageApplicationReceiver.MediaType">
+            <summary>
+            Gets or sets the type of the media.
+            </summary>
+            <value>
+            The type of the media.
+            </value>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.MessageApplicationReceiver.Content">
+            <summary>
+            Gets or sets the content filter. It can be a regex.
+            </summary>
+            <value>
+            The text regex.
+            </value>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.NotificationApplicationReceiver.EventType">
+            <summary>
+            Gets or sets the type of the event. 
+            </summary>
+            <value>
+            The type of the event.
+            </value>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.SettingsContainer.Settings">
+            <summary>
+            Gets or sets the settings to be injected to the startup and receivers types.
+            </summary>
+            <value>
+            The settings.
+            </value>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Host.SettingsContainer.SettingsType">
+            <summary>
+            Gets or sets a type to be used to deserialize the settings property.
+            </summary>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.Host.TypeServiceProvider">
+            <summary>
+            Defines a simple type service provider.
+            </summary>
+            <seealso cref="T:Takenet.MessagingHub.Client.Host.IServiceContainer" />
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Host.TypeServiceProvider.GetService(System.Type)">
+            <summary>
+            Gets the service.
+            </summary>
+            <param name="serviceType">Type of the service.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Host.TypeServiceProvider.RegisterService(System.Type,System.Object)">
+            <summary>
+            Registers the service instance.
+            </summary>
+            <param name="serviceType">Type of the service.</param>
+            <param name="instance">The instance.</param>
+            <exception cref="T:System.ArgumentNullException">
+            </exception>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.MessagingHubClientBuilder.Build">
+            <summary>
+            Builds a <see cref="T:Takenet.MessagingHub.Client.IMessagingHubClient"/> with the configured parameters
+            </summary>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.Connection.IMessagingHubConnection">
+            <summary>
+            Represents a connection with the messaging hub. Use the <see cref="!:MessagingHubConnectionBuilder"/> to build a connection
+            </summary>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Connection.IMessagingHubConnection.IsConnected">
+            <summary>
+            Indicates whether or not a the connection is active
+            </summary>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Connection.IMessagingHubConnection.MaxConnectionRetries">
+            <summary>
+            Maximum number of retries when failing to connect to the Messaging Hub
+            </summary>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Connection.IMessagingHubConnection.SendTimeout">
+            <summary>
+            Time to wait before a timeout exception is raised when trying to send envelopes through this connection
+            </summary>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Connection.IMessagingHubConnection.OnDemandClientChannel">
+            <summary>
+            Channel through which the envelopes are sent and received
+            </summary>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Connection.IMessagingHubConnection.ConnectAsync(System.Threading.CancellationToken)">
+            <summary>
+            Activate the connection with the Messaging Hub
+            </summary>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Connection.IMessagingHubConnection.DisconnectAsync(System.Threading.CancellationToken)">
+            <summary>
+            Disconnects from the Messaging Hub
+            </summary>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.Connection.IMessagingHubConnectionConfigurator`1">
+            <summary>
+            Configure a connection with the Messaging Hub
+            </summary>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Connection.IMessagingHubConnectionConfigurator`1.UsingAccessKey(System.String,System.String)">
+            <summary>
+            Inform an account to be used to connect to the Messaging Hub
+            </summary>
+            <param name="identifier">Account identifier</param>
+            <param name="accessKey">Account access key</param>
+            <returns>The same instance of the <see cref="!:IMessagingHubConnectionConfigurator"/>, configured to use the given account</returns>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Connection.IMessagingHubConnectionConfigurator`1.UsingPassword(System.String,System.String)">
+            <summary>
+            Inform an account to be used to connect to the Messaging Hub
+            </summary>
+            <param name="identifier">Account identifier</param>
+            <param name="password">Account password</param>
+            <returns>The same instance of the <see cref="!:IMessagingHubConnectionConfigurator"/>, configured to use the given account</returns>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Connection.IMessagingHubConnectionConfigurator`1.UsingCompression(Lime.Protocol.SessionCompression)">
+            <summary>
+            Overrides the session compression mode
+            </summary>
+            <param name="sessionCompression">The desired <see cref="T:Lime.Protocol.SessionCompression">compression mode</see></param>
+            <returns>The same instance of the <see cref="!:IMessagingHubConnectionConfigurator"/>, configured to use the given compression mode</returns>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Connection.IMessagingHubConnectionConfigurator`1.UsingDomain(System.String)">
+            <summary>
+            Overrides the default domain with the given one
+            </summary>
+            <param name="domain">The domain to be used</param>
+            <returns>The same instance of the <see cref="!:IMessagingHubConnectionConfigurator"/>, configured to use the given domain</returns>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Connection.IMessagingHubConnectionConfigurator`1.UsingEncryption(Lime.Protocol.SessionEncryption)">
+            <summary>
+            Overrides the session encryption mode
+            </summary>
+            <param name="sessionEncryption">The desired <see cref="T:Lime.Protocol.SessionEncryption">encryption mode</see></param>
+            <returns>The same instance of the <see cref="!:IMessagingHubConnectionConfigurator"/>, configured to use the given encryption mode</returns>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Connection.IMessagingHubConnectionConfigurator`1.UsingGuest">
+            <summary>
+            Use the guest account to connect to the Messaging Hub
+            </summary>
+            <returns>The same instance of the <see cref="!:IMessagingHubConnectionConfigurator"/>, configured to use the guest account</returns>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Connection.IMessagingHubConnectionConfigurator`1.UsingHostName(System.String)">
+            <summary>
+            Overrides the default host name with the given one. It can be used to connect to an alternative instance of the Messaging Hub or another Lime endpoint
+            </summary>
+            <param name="hostName">The address of the host, without the protocol prefix and port number sufix</param>
+            <returns>The same instance of the <see cref="!:IMessagingHubConnectionConfigurator"/>, configured to use the given host name</returns>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Connection.IMessagingHubConnectionConfigurator`1.WithMaxConnectionRetries(System.Int32)">
+            <summary>
+            Overrides the default <see cref="P:Takenet.MessagingHub.Client.Connection.IMessagingHubConnection.MaxConnectionRetries">maximum connection retries</see>
+            </summary>
+            <param name="maxConnectionRetries">The maximum number of connection retries. The number must be at least 1 and at most 5</param>
+            <returns>The same instance of the <see cref="!:IMessagingHubConnectionConfigurator"/>, configured to use the given maximum connection retries</returns>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Connection.IMessagingHubConnectionConfigurator`1.WithSendTimeout(System.TimeSpan)">
+            <summary>
+            Overrides the default <see cref="P:Takenet.MessagingHub.Client.Connection.IMessagingHubConnection.SendTimeout">send timeout</see>
+            </summary>
+            <param name="timeout">A timespan representing the desired send timeout</param>
+            <returns>The same instance of the <see cref="!:IMessagingHubConnectionConfigurator"/>, configured to use the given send timeout</returns>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Connection.MessagingHubConnection.ChannelCreationFailedAsync(Lime.Protocol.Network.FailedChannelInformation)">
+            <summary>
+            In this context, a LimeException usually means that some credential information is wrong,
+            and should be checked.
+            </summary>
+            <param name="failedChannelInformation">Information about the failure</param>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Connection.MessagingHubConnectionBuilder`1.Build">
+            <summary>
+            Builds a <see cref="T:Takenet.MessagingHub.Client.Connection.IMessagingHubConnection">connection</see> with the configured parameters
+            </summary>
+            <returns>An inactive connection with the Messaging Hub. Call <see cref="M:Takenet.MessagingHub.Client.Connection.IMessagingHubConnection.ConnectAsync(System.Threading.CancellationToken)"/> to activate it</returns>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.Listener.IMessagingHubListener">
+            <summary>
+            Listen to envelopes sent to the account you are connected as
+            </summary>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Listener.IMessagingHubListener.Listening">
+            <summary>
+            Indicates whether or not the listener is active
+            </summary>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Listener.IMessagingHubListener.AddMessageReceiver(Takenet.MessagingHub.Client.Listener.IMessageReceiver,System.Predicate{Lime.Protocol.Message},System.Int32)">
+            <summary>
+            Add a message receiver for messages that satisfy the given filter criteria
+            </summary>
+            <param name="messageReceiver">The message receiver that will be invoked when a message that satisfy the given criteria is received</param>
+            <param name="messageFilter">The criteria to filter the messages</param>
+            <param name="priority">The priority of the receiver related to the others. Lower values have higher priority. This value can be repeated among receivers. In this cases, the receivers are evaluated in parallel.</param>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Listener.IMessagingHubListener.AddNotificationReceiver(Takenet.MessagingHub.Client.Listener.INotificationReceiver,System.Predicate{Lime.Protocol.Notification},System.Int32)">
+            <summary>
+            Add a notification receiver for messages that satisfy the given filter criteria
+            </summary>
+            <param name="notificationReceiver">The notification receiver that will be invoked when a notification that satisfy the given criteria is received</param>
+            <param name="notificationFilter">The criteria to filter the notifications</param>
+            <param name="priority">The priority of the receiver related to the others. Lower values have higher priority. This value can be repeated among receivers. In this cases, the receivers are evaluated in parallel.</param>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.Listener.IStartable">
+            <summary>
+            Represents a type that can be started
+            </summary>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Listener.IStartable.StartAsync(System.Threading.CancellationToken)">
+            <summary>
+            Starts the operation
+            </summary>
+            <param name="cancellationToken">A cancellation token to allow the operation to be canceled</param>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.Listener.IStoppable">
+            <summary>
+            Represents a type that can be stopped
+            </summary>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Listener.IStoppable.StopAsync(System.Threading.CancellationToken)">
+            <summary>
+            Stops the operation
+            </summary>
+            <param name="cancellationToken">A cancellation token to allow the operation to be canceled</param>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.Listener.BlackholeNotificationReceiver">
+            <summary>
+            Notification receiver that simply ignores the received notification
+            </summary>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Listener.EnvelopeListenerRegistrar.AddMessageReceiver(System.Func{Takenet.MessagingHub.Client.Listener.IMessageReceiver},System.Predicate{Lime.Protocol.Message},System.Int32)">
+            <summary>
+            Add a message receiver listener to handle received messages.
+            </summary>
+            <param name="receiverFactory">A function used to build the notification listener</param>
+            <param name="predicate">The message predicate used as a filter of messages received by listener.</param>
+            <param name="priority"></param>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Listener.EnvelopeListenerRegistrar.AddNotificationReceiver(System.Func{Takenet.MessagingHub.Client.Listener.INotificationReceiver},System.Predicate{Lime.Protocol.Notification},System.Int32)">
+            <summary>
+            Add a notification receiver listener to handle received notifications.
+            </summary>
+            <param name="receiverFactory">A function used to build the notification listener</param>
+            <param name="predicate">The notification predicate used as a filter of notifications received by listener.</param>
+            <param name="priority"></param>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.Listener.IEnvelopeReceiver`1">
+            <summary>
+            Receive envelopes from Messaging Hub
+            </summary>
+            <typeparam name="TEnvelope"></typeparam>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Listener.IEnvelopeReceiver`1.ReceiveAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            Receives an envelope
+            </summary>
+            <param name="envelope">Envelope type</param>
+            <param name="cancellationToken">A cancellation token to allow the task to be canceled</param>
+            <returns>Task representing the receive operation</returns>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.Listener.IMessageReceiver">
+            <summary>
+            Specialization of <see cref="T:Takenet.MessagingHub.Client.Listener.IEnvelopeReceiver`1"/> for messages
+            </summary>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.Listener.INotificationReceiver">
+            <summary>
+            Specialization of <see cref="T:Takenet.MessagingHub.Client.Listener.IEnvelopeReceiver`1"/> for notifications
+            </summary>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.Listener.UnsupportedMessageReceiver">
+            <summary>
+            Message receiver that automatically respond to any message as an unsupported message
+            </summary>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.MessagingHubListenerExtensions">
+            <summary>
+            Extension methods to simplify the usage of the <see cref="T:Takenet.MessagingHub.Client.Listener.MessagingHubListener"/>
+            </summary>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.MessagingHubListenerExtensions.AddMessageReceiver(Takenet.MessagingHub.Client.Listener.IMessagingHubListener,Takenet.MessagingHub.Client.Listener.IMessageReceiver,Lime.Protocol.MediaType)">
+            <summary>
+            Add a message receiver for the given mime type
+            </summary>
+            <param name="listener">The listener to add the receivers to</param>
+            <param name="messageReceiver">The message receiver that will be invoked when a message of the given mime type is received</param>
+            <param name="forMimeType">The mime type used to filter the received messages</param>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.MessagingHubListenerExtensions.AddNotificationReceiver(Takenet.MessagingHub.Client.Listener.IMessagingHubListener,Takenet.MessagingHub.Client.Listener.INotificationReceiver,System.Nullable{Lime.Protocol.Event})">
+            <summary>
+            Add a notification receiver for the given event type
+            </summary>
+            <param name="listener">The listener to add the receivers to</param>
+            <param name="notificationReceiver">The notification receiver that will be invoked when a notification of the given event type is received</param>
+            <param name="forEventType">The event type used to filter the received notifications</param>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.MessagingHubListenerExtensions.AddMessageReceiver(Takenet.MessagingHub.Client.Listener.IMessagingHubListener,Takenet.MessagingHub.Client.Listener.IMessageReceiver,System.Predicate{Lime.Protocol.Message})">
+            <summary>
+            Add a message receiver for messages that satisfy the given filter criteria
+            </summary>
+            <param name="listener">The listener to add the receivers to</param>
+            <param name="messageReceiver">The message receiver that will be invoked when a message that satisfy the given criteria is received</param>
+            <param name="messageFilter">The criteria to filter the messages</param>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.MessagingHubListenerExtensions.AddNotificationReceiver(Takenet.MessagingHub.Client.Listener.IMessagingHubListener,Takenet.MessagingHub.Client.Listener.INotificationReceiver,System.Predicate{Lime.Protocol.Notification})">
+            <summary>
+            Add a notification receiver for messages that satisfy the given filter criteria
+            </summary>
+            <param name="listener">The listener to add the receivers to</param>
+            <param name="notificationReceiver">The notification receiver that will be invoked when a notification that satisfy the given criteria is received</param>
+            <param name="notificationFilter">The criteria to filter the notifications</param>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.MessagingHubListenerExtensions.AddMessageReceiver(Takenet.MessagingHub.Client.Listener.IMessagingHubListener,System.Func{Lime.Protocol.Message,System.Threading.CancellationToken,System.Threading.Tasks.Task},Lime.Protocol.MediaType)">
+            <summary>
+            Add a message receiver for the given mime type
+            </summary>
+            <param name="listener">The listener to add the receivers to</param>
+            <param name="onMessageReceived">A callback method that will be invoked when a message of the given mime type is received</param>
+            <param name="forMimeType">The mime type used to filter the received messages</param>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.MessagingHubListenerExtensions.AddNotificationReceiver(Takenet.MessagingHub.Client.Listener.IMessagingHubListener,System.Func{Lime.Protocol.Notification,System.Threading.CancellationToken,System.Threading.Tasks.Task},System.Nullable{Lime.Protocol.Event})">
+            <summary>
+            Add a notification receiver for the given event type
+            </summary>
+            <param name="listener">The listener to add the receivers to</param>
+            <param name="onNotificationReceived">A callback method that will be invoked when a notification of the given event type is received</param>
+            <param name="forEventType">The event type used to filter the received notifications</param>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.MessagingHubListenerExtensions.AddMessageReceiver(Takenet.MessagingHub.Client.Listener.IMessagingHubListener,System.Func{Lime.Protocol.Message,System.Threading.CancellationToken,System.Threading.Tasks.Task},System.Predicate{Lime.Protocol.Message})">
+            <summary>
+            Add a message receiver for messages that satisfy the given filter criteria
+            </summary>
+            <param name="listener">The listener to add the receivers to</param>
+            <param name="onMessageReceived">A callback method that will be invoked when a message that satisfy the given criteria is received</param>
+            <param name="messageFilter">The criteria to filter the messages</param>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.MessagingHubListenerExtensions.AddNotificationReceiver(Takenet.MessagingHub.Client.Listener.IMessagingHubListener,System.Func{Lime.Protocol.Notification,System.Threading.CancellationToken,System.Threading.Tasks.Task},System.Predicate{Lime.Protocol.Notification})">
+            <summary>
+            Add a notification receiver for messages that satisfy the given filter criteria
+            </summary>
+            <param name="listener">The listener to add the receivers to</param>
+            <param name="onNotificationReceived">A callback method that will be invoked when a notification that satisfy the given criteria is received</param>
+            <param name="notificationFilter">The criteria to filter the notifications</param>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.Messages.MediaTypes">
+            <summary>
+            Represent common media types
+            </summary>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Messages.MediaTypes.Any">
+            <summary>
+            Represents any media type
+            </summary>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.Messages.MediaTypes.PlainText">
+            <summary>
+            Represents media type 'text/plain'
+            </summary>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.Messages.MessageExtensions">
+            <summary>
+            Extension methods for <see cref="T:Lime.Protocol.Message"/>
+            </summary>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.Sender.IMessagingHubSender">
+            <summary>
+            Send envelopes through a Messaging Hub connection
+            </summary>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Sender.IMessagingHubSender.SendCommandAsync(Lime.Protocol.Command,System.Threading.CancellationToken)">
+            <summary>
+            Send a command through the Messaging Hub
+            </summary>
+            <param name="command">Command to be sent</param>
+            <param name="cancellationToken">A cancellation token to allow the task to be canceled</param>
+            <returns>A task representing the sending operation. When completed, it will contain the command response</returns>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Sender.IMessagingHubSender.SendMessageAsync(Lime.Protocol.Message,System.Threading.CancellationToken)">
+            <summary>
+            Send a message through the Messaging Hub
+            </summary>
+            <param name="message">Message to be sent</param>
+            <param name="cancellationToken">A cancellation token to allow the task to be canceled</param>
+            <returns>A task representing the sending operation</returns>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.Sender.IMessagingHubSender.SendNotificationAsync(Lime.Protocol.Notification,System.Threading.CancellationToken)">
+            <summary>
+            Send a notification through the Messaging Hub
+            </summary>
+            <param name="notification">Notification to be sent</param>
+            <param name="cancellationToken">A cancellation token to allow the task to be canceled</param>
+            <returns>A task representing the sending operation</returns>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.MessagingHubSenderExtensions">
+            <summary>
+            Extension methods to simplify the usage of the <see cref="T:Takenet.MessagingHub.Client.Sender.MessagingHubSender"/>
+            </summary>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.MessagingHubSenderExtensions.SendMessageAsync(Takenet.MessagingHub.Client.Sender.IMessagingHubSender,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Send a message through the Messaging Hub
+            </summary>
+            <param name="sender">The sender of the message</param>
+            <param name="content">The content of the message</param>
+            <param name="to">The destination of the message</param>
+            <param name="cancellationToken">A cancellation token to allow the task to be canceled</param>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.MessagingHubSenderExtensions.SendMessageAsync(Takenet.MessagingHub.Client.Sender.IMessagingHubSender,System.String,Lime.Protocol.Node,System.Threading.CancellationToken)">
+            <summary>
+            Send a message through the Messaging Hub
+            </summary>
+            <param name="sender">The sender of the message</param>
+            <param name="content">The content of the message</param>
+            <param name="to">The destination of the message</param>
+            <param name="cancellationToken">A cancellation token to allow the task to be canceled</param>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.MessagingHubSenderExtensions.SendMessageAsync(Takenet.MessagingHub.Client.Sender.IMessagingHubSender,Lime.Protocol.Document,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Send a message through the Messaging Hub
+            </summary>
+            <param name="sender">The sender of the message</param>
+            <param name="content">The content of the message</param>
+            <param name="to">The destination of the message</param>
+            <param name="cancellationToken">A cancellation token to allow the task to be canceled</param>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.MessagingHubSenderExtensions.SendMessageAsync(Takenet.MessagingHub.Client.Sender.IMessagingHubSender,Lime.Protocol.Document,Lime.Protocol.Node,System.Threading.CancellationToken)">
+            <summary>
+            Send a message through the Messaging Hub
+            </summary>
+            <param name="sender">The sender of the message</param>
+            <param name="content">The content of the message</param>
+            <param name="to">The destination of the message</param>
+            <param name="cancellationToken">A cancellation token to allow the task to be canceled</param>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.StateManager">
+            <summary>
+            Provides the management of states for filtering message and notification receivers registered in the application.
+            </summary>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.StateManager.Instance">
+            <summary>
+            Gets the instance.
+            </summary>
+            <value>
+            The instance.
+            </value>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.StateManager.StateTimeout">
+            <summary>
+            Gets or sets the state expiration timeout.
+            </summary>
+            <value>
+            The state timeout.
+            </value>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.StateManager.GetState(Lime.Protocol.Node)">
+            <summary>
+            Gets the last known node state.
+            </summary>
+            <param name="node">The node.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.StateManager.SetState(Lime.Protocol.Node,System.String)">
+            <summary>
+            Sets the node state.
+            </summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.StateManager.ResetState(Lime.Protocol.Node)">
+            <summary>
+            Resets the node state to the default value.
+            </summary>
+            <param name="node">The node.</param>
+        </member>
+        <member name="F:Takenet.MessagingHub.Client.StateManager.StateChanged">
+            <summary>
+            Occurs when a node state is changed.
+            This event should be used to synchronize multiple application instances states.
+            </summary>
+        </member>
+        <member name="T:Takenet.MessagingHub.Client.StateEventArgs">
+            <summary>
+            Represents an event for the user state.
+            </summary>
+            <seealso cref="T:System.EventArgs" />
+        </member>
+        <member name="M:Takenet.MessagingHub.Client.StateEventArgs.#ctor(Lime.Protocol.Node,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Takenet.MessagingHub.Client.StateEventArgs"/> class.
+            </summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <exception cref="T:System.ArgumentNullException">
+            </exception>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.StateEventArgs.Node">
+            <summary>
+            Gets the node.
+            </summary>
+            <value>
+            The node.
+            </value>
+        </member>
+        <member name="P:Takenet.MessagingHub.Client.StateEventArgs.State">
+            <summary>
+            Gets the state.
+            </summary>
+            <value>
+            The state.
+            </value>
+        </member>
+    </members>
+</doc>
