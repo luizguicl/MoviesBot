@@ -30,14 +30,20 @@ namespace MoviesBot
                 {
                     new SelectOption
                     {
-                        Text = "Ver Top 5",
-                        Value = new PlainText { Text = Constants.RECOMMEND_MOVIE_COMMAND}
-                    },                
+                        Text = Constants.SHOW_TOP_5_OPTION,
+                        Value = new PlainText { Text = Constants.SHOW_TOP_5_COMMAND}
+                    },
+
+                    new SelectOption
+                    {
+                        Text = Constants.RECEIVE_SUGGESTION_OPTION,
+                        Value = new PlainText { Text = Constants.RECEIVE_SUGGESTION_COMMAND}
+                    },
 
                      new SelectOption
                     {
-                        Text = "Escolher gênero",
-                        Value = new PlainText { Text = Constants.RECOMMEND_MOVIE_COMMAND}
+                        Text = Constants.CHOOSE_GENRE_OPTION,
+                        Value = new PlainText { Text = Constants.CHOOSE_GENRE_COMMAND}
                     }
                 }
             };

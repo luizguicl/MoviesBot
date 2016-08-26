@@ -9,6 +9,9 @@ namespace MoviesBot
     public enum State
     {
         Start,
-        RecommendMovie
+        InitialMenu,
+        Top5Movies,
+        RecommendMovie,
+        Top5MoviesOption
     }
 }
