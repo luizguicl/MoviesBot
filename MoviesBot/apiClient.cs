@@ -38,115 +38,128 @@ namespace MoviesBot
             _client.BaseAddress = new Uri(_appSettings.MovieDbBaseUrl);
         }
 
-        public async Task<JObject> GetPerson(string name)
+        public async Task<Person> GetPerson(string name)
         {
-            var parameters = new FormUrlEncodedContent(new[]
-            {
-                new KeyValuePair<string, string>("api_key", _appSettings.ApiKey),
-                new KeyValuePair<string, string>("query", name ),
-            });
+            NameValueCollection parameters = new NameValueCollection();
+            parameters.Add("api_key", _appSettings.ApiKey);
+            parameters.Add("query", name);
+            parameters.Add("language", "pt-br");
 
-            var response = await _client.GetAsync(string.Format("{0}{1}{2}", _appSettings.MovieDbBaseUrl, "search/person?", parameters));
+            var queryString = ToQueryString(parameters);
+
+            var response = await _client.GetAsync(string.Format("{0}{1}{2}", _appSettings.MovieDbBaseUrl, "search/person?", queryString));
 
             //will throw an exception if not successful
             response.EnsureSuccessStatusCode();
 
             string content = await response.Content.ReadAsStringAsync();
-            return await Task.Run(() => JObject.Parse(content));
+            var result = JsonConvert.DeserializeObject<PersonResponse>(content);
+
+            return result.results.First();
         }
 
-        public async Task<JObject> GetMovie(string name)
+        public async Task<Movie> GetMovie(string name)
         {
-            var parameters = new FormUrlEncodedContent(new[]
-            {
-                new KeyValuePair<string, string>("api_key", _appSettings.ApiKey),
-                new KeyValuePair<string, string>("query", name ),
-            });
+            NameValueCollection parameters = new NameValueCollection();
+            parameters.Add("api_key", _appSettings.ApiKey);
+            parameters.Add("query", name);
+            parameters.Add("language", "pt-br");
 
-            var response = await _client.GetAsync(string.Format("{0}{1}{2}", _appSettings.MovieDbBaseUrl, "search/movie?", parameters));
+            var queryString = ToQueryString(parameters);
+
+
+            var response = await _client.GetAsync(string.Format("{0}{1}{2}", _appSettings.MovieDbBaseUrl, "search/movie?", queryString));
 
             //will throw an exception if not successful
             response.EnsureSuccessStatusCode();
 
             string content = await response.Content.ReadAsStringAsync();
-            return await Task.Run(() => JObject.Parse(content));
+            var result = JsonConvert.DeserializeObject<MoviesResponse>(content);
+
+            return result.results.First();
         }
 
 
-        public async Task<JObject> GetSimilarMovies(string movieId)
+        public async Task<List<Movie>> GetSimilarMovies(string movieId)
         {
-            var parameters = new FormUrlEncodedContent(new[]
-            {
-                new KeyValuePair<string, string>("api_key", _appSettings.ApiKey),
-                new KeyValuePair<string, string>("id", movieId ),
-                new KeyValuePair<string, string>("language", "pt-br" )
-            });
+            NameValueCollection parameters = new NameValueCollection();
+            parameters.Add("api_key", _appSettings.ApiKey);
+            parameters.Add("language", "pt-br");
+            parameters.Add("id", movieId);
+            parameters.Add("page", "1");
 
-
+            var queryString = ToQueryString(parameters);
+            
             var similarMovieUri = string.Format("movie/{0}/similar?", movieId);
-            var response = await _client.GetAsync(string.Format("{0}{1}{2}", _appSettings.MovieDbBaseUrl, similarMovieUri, parameters));
+            var response = await _client.GetAsync(string.Format("{0}{1}{2}", _appSettings.MovieDbBaseUrl, similarMovieUri, queryString));
 
             //will throw an exception if not successful
             response.EnsureSuccessStatusCode();
 
             string content = await response.Content.ReadAsStringAsync();
-            return await Task.Run(() => JObject.Parse(content));
+            var result = JsonConvert.DeserializeObject<MoviesResponse>(content);
+
+            return result.results.Take(5).ToList();
         }
 
 
         //Retorna o Id do gênero pelo nome
-        public async Task<JObject> GetGenreByName(string name)
+        public async Task<int> GetGenreByName(string name)
         {
-            var parameters = new FormUrlEncodedContent(new[]
-            {
-                new KeyValuePair<string, string>("api_key", _appSettings.ApiKey),
-                new KeyValuePair<string, string>("language", "pt-br" ),
-            });
+            NameValueCollection parameters = new NameValueCollection();
+            parameters.Add("api_key", _appSettings.ApiKey);
+            parameters.Add("language", "pt-br");
 
-            var response = await _client.GetAsync(string.Format("{0}{1}{2}", _appSettings.MovieDbBaseUrl, _genreListUri, parameters));
+
+            var queryString = ToQueryString(parameters);
+            var response = await _client.GetAsync(string.Format("{0}{1}{2}", _appSettings.MovieDbBaseUrl, _genreListUri, queryString));
 
             //will throw an exception if not successful
             response.EnsureSuccessStatusCode();
 
             string content = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<Genre>(content);
 
-            return await Task.Run(() => JObject.Parse(content));
+            return result.id;
         }
 
 
-        //Busca 10 filmes mais bem avaliados de um determinado gênero
-        public async Task<JObject> GetMoviesByGenreId(string genreId)
+        //Busca 5 filmes mais bem avaliados de um determinado gênero
+        public async Task<List<Movie>> GetMoviesByGenreId(string genreId)
         {
-            var parameters = new FormUrlEncodedContent(new[]
-            {
-                new KeyValuePair<string, string>("api_key", _appSettings.ApiKey),
-                new KeyValuePair<string, string>("language", "pt-br" ),
-                new KeyValuePair<string, string>("id", genreId )
-            });
 
+            NameValueCollection parameters = new NameValueCollection();
+            parameters.Add("api_key", _appSettings.ApiKey);
+            parameters.Add("language", "pt-br");
+            parameters.Add("id", genreId);
+            parameters.Add("page", "1");
+
+            var queryString = ToQueryString(parameters);
             var genreUri = string.Format("genre/{0}/movies?", genreId);
 
-            var response = await _client.GetAsync(string.Format("{0}{1}{2}", _appSettings.MovieDbBaseUrl, genreUri, parameters));
+            var response = await _client.GetAsync(string.Format("{0}{1}{2}", _appSettings.MovieDbBaseUrl, genreUri, queryString));
 
             //will throw an exception if not successful
             response.EnsureSuccessStatusCode();
 
             string content = await response.Content.ReadAsStringAsync();
 
-            return await Task.Run(() => JObject.Parse(content));
+            var result = JsonConvert.DeserializeObject<MoviesResponse>(content);
+
+            return result.results.Take(5).ToList();
         }
 
         //Busca 5 filmes mais bem avaliados do IMDB
         public async Task<List<Movie>> GetTopRatedMovies()
         {
-            NameValueCollection collection = new NameValueCollection();
-            collection.Add("api_key", _appSettings.ApiKey);
-            collection.Add("language", "pt-br");
-            collection.Add("page", "1");
+            NameValueCollection parameters = new NameValueCollection();
+            parameters.Add("api_key", _appSettings.ApiKey);
+            parameters.Add("language", "pt-br");
+            parameters.Add("page", "1");
 
-            var queryString = ToQueryString(collection);
+            var queryString = ToQueryString(parameters);
 
-            var uri = string.Format("{0}{1}{2}", _appSettings.MovieDbBaseUrl, _topRatedMoviesUri, queryString);
+            var uri = string.Format("{0}{1}{2}", _appSettings.MovieDbBaseUrl, _topRatedMoviesUri, parameters);
 
             var response = await _client.GetAsync(uri);
 
@@ -154,7 +167,7 @@ namespace MoviesBot
             response.EnsureSuccessStatusCode();
 
             string content = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<TopRatedMoviesResponse>(content);
+            var result = JsonConvert.DeserializeObject<MoviesResponse>(content);
 
             return result.results.Take(5).ToList();
         }
