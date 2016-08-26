@@ -13,7 +13,8 @@ namespace MoviesBot
 
 
         //Commands
-        public const string RECOMMEND_MOVIE_COMMAND = "/recommendMovie";           
+        public const string RECOMMEND_MOVIE_BY_GENRE_COMMAND = "/recommendMovieByGenre";
+        public const string SHOW_TOP_5_COMMAND = "/showTop5";
 
 
     }
