@@ -14,6 +14,10 @@ namespace MoviesBot
 {
     public class MoviesRecommendBot
     {
+
+        private readonly String MOVIEDB_BASE_URL = "http://image.tmdb.org/t/p/";
+        private readonly String SIZE = "w185";
+
         private readonly IMessagingHubSender _sender;
 
         public MoviesRecommendBot(IMessagingHubSender sender)
@@ -34,24 +38,56 @@ namespace MoviesBot
                         Value = new PlainText { Text = Constants.SHOW_TOP_5_COMMAND}
                     },
 
-                    new SelectOption
-                    {
-                        Text = Constants.RECEIVE_SUGGESTION_OPTION,
-                        Value = new PlainText { Text = Constants.RECEIVE_SUGGESTION_COMMAND}
-                    },
-
-                     new SelectOption
-                    {
-                        Text = Constants.CHOOSE_GENRE_OPTION,
-                        Value = new PlainText { Text = Constants.CHOOSE_GENRE_COMMAND}
-                    }
                 }
             };
 
             await _sender.SendMessageAsync(select, owner, cancellationToken);
         }
 
-   
+
+
+        public async Task SendTop5MoviesAsync(List<Movie> movieList, Node owner, CancellationToken cancellationToken)
+        {
+            var select = new Select();
+            select.Text = "Escolha uma das opções";
+
+            var options = new List<SelectOption>(); 
+               
+            foreach(Movie m in movieList)
+            {
+                options.Add(new SelectOption
+                {
+                    Text = m.original_title,
+                    Value = new PlainText { Text = m.id.ToString() }
+                });
+            }
+
+            select.Options = options.ToArray();
+
+            await _sender.SendMessageAsync(select, owner, cancellationToken);
+        }
+
+        public async Task SendMovieDataAsync(Movie movie, Node from, CancellationToken cancellationToken)
+        {
+            var uriLink = new Uri(MOVIEDB_BASE_URL + SIZE + movie.poster_path);
+            var uriPreviewLink = new Uri(MOVIEDB_BASE_URL + SIZE + movie.backdrop_path);
+            var mediaTypeLink = new MediaType(MediaType.DiscreteTypes.Image, MediaType.SubTypes.JPeg);
+            var mediaTypePreviewLink = new MediaType(MediaType.DiscreteTypes.Image, MediaType.SubTypes.JPeg);
+
+            var mediaLink = new MediaLink
+            {
+                Uri = uriLink,
+                PreviewUri = uriPreviewLink,
+                Type = mediaTypeLink,
+                PreviewType = mediaTypePreviewLink,
+                Size = 1,
+                Text = "Image Link"
+            };
+
+            await _sender.SendMessageAsync(mediaLink, from, cancellationToken);
+        }
+
+
         public async Task SendMovieRecommendationAsync(Node from, CancellationToken cancellationToken)
         {
             var uriLink = new Uri("https://i.ytimg.com/vi/KGMqe7_8ORI/maxresdefault.jpg");

@@ -15,7 +15,7 @@ namespace MoviesBot
 
         public const string MOVIE_CHOSEN = "Você já encontrou o seu filme? Se SIM, maravilha! Se NÃO, envie o nome do ator, diretor o gênero ou ano de lançamento do filme.";
 
-        public const string FINAL_MESSAGE = "Hora de pegar a pipoca. Aproveite o filme e depois volte para conferir as novidades.";
+        public const string FINAL_MESSAGE = "Hora de pegar a pipoca. Aproveite o filme e depois volte para conferir as novidades. :(";
 
 
         //Options

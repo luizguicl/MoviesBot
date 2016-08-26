@@ -6,12 +6,16 @@ using Takenet.MessagingHub.Client;
 using Takenet.MessagingHub.Client.Listener;
 using Takenet.MessagingHub.Client.Sender;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MoviesBot
 {
     public class PlainTextMessageReceiver : IMessageReceiver
     {
         private IDictionary<string, State> Session { get; }
+        private IDictionary<string, List<Movie>> Top5Movies { get; }
+
+
         private ApiClient _apiClient;
         private readonly IMessagingHubSender _sender;
 
@@ -21,6 +25,7 @@ namespace MoviesBot
         {
             _sender = sender;
             Session = new Dictionary<string, State>();
+            Top5Movies = new Dictionary<string, List<Movie>>();
             Bot = new MoviesRecommendBot(_sender);
             _apiClient = new ApiClient(appSettings);
         }
@@ -69,6 +74,7 @@ namespace MoviesBot
                     break;
                 default:
                     await _sender.SendMessageAsync(Constants.ERROR_MESSAGE, message.From, cancellationToken);
+                    Session[userIdentity] = State.Start;
                     break;
             }
 
@@ -94,9 +100,15 @@ namespace MoviesBot
         {
             var option = message.Content.ToString().ToLower();
 
-            //process chosen option
 
-            //Send movie data to user
+            List<Movie> userMovieList;
+
+            Top5Movies.TryGetValue(userIdentity, out userMovieList);
+
+            userMovieList.Where(m => m.id.ToString().Equals(option));
+            var chosenMovie = userMovieList.First();
+
+            await Bot.SendMovieDataAsync(chosenMovie, message.From, cancellationToken);
 
             await _sender.SendMessageAsync(Constants.MOVIE_CHOSEN, message.From, cancellationToken);
 
@@ -111,26 +123,24 @@ namespace MoviesBot
 
             if (command.Equals(Constants.SHOW_TOP_5_COMMAND.ToLower()))
             {
-                await ProcessTop5Command(userIdentity, cancellationToken);
+                await ProcessTop5Command(userIdentity, message.From, cancellationToken);
                 Session[userIdentity] = State.Top5Movies;
 
             }
-            else if (command.Equals(Constants.RECEIVE_SUGGESTION_COMMAND.ToLower()))
-            {
-
-            }
-            else if (command.Equals(Constants.CHOOSE_GENRE_COMMAND.ToLower()))
-            {
-
-            }
+            
 
             Session[userIdentity] = State.InitialMenu;
 
         }
 
-        private async Task ProcessTop5Command(string userIdentity, CancellationToken cancellationToken)
+
+        private async Task ProcessTop5Command(string userIdentity, Node from, CancellationToken cancellationToken)
         {
-            await _apiClient.GetTopRatedMovies();
+            var movieList = await _apiClient.GetTopRatedMovies();
+
+            //Top5Movies.Add(userIdentity, movieList);
+            
+            await Bot.SendTop5MoviesAsync(movieList, from, cancellationToken);
         }
 
         private async Task ProcessStartState(string userIdentity, Message message, CancellationToken cancellationToken)
