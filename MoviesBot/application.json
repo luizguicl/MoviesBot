@@ -5,10 +5,22 @@
     {
       "type": "PlainTextMessageReceiver",
       "mediaType": "text/plain"
+    },
+    {
+      "type": "HttpContentReceiver",
+      "mediaType": "httpContent"
     }
   ],
+  "notificationReceivers": [
+    {
+      "type": "NotificationReceiver",
+      "mediaType": "text/plain"
+    }
+  ],
+  "settingsType": "AppSettings",
   "settings": {
-    "setting1": "value1"
+    "movieDbBaseUrl": "http://api.themoviedb.org/",    
+    "apiKey": "d06f8520d5761365ae7da0475df9acfa"
   },
   "startupType": "Startup",
   "schemaVersion": 2
