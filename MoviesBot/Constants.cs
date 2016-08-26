@@ -11,11 +11,11 @@ namespace MoviesBot
         //Phraseology
         public const string INITIAL_MESSAGE = "Oi! Sou o BotFlicks e vou te ajudar a escolher um filme bacana hoje. Você pode: ";
 
-        public const string ERROR_MESSAGE = "Você pode refazer a sua busca? Quero te ajudar, mas não entendi o que você precisa!";
+        public const string ERROR_MESSAGE = "Você pode refazer a sua busca? Quero te ajudar, mas não entendi o que você precisa! :(";
 
         public const string MOVIE_CHOSEN = "Você já encontrou o seu filme? Se SIM, maravilha! Se NÃO, envie o gênero do filme.";
 
-        public const string FINAL_MESSAGE = "Hora de pegar a pipoca. Aproveite o filme e depois volte para conferir as novidades. :(";
+        public const string FINAL_MESSAGE = "Hora de pegar a pipoca. Aproveite o filme e depois volte para conferir as novidades. :)";
 
 
         //Options

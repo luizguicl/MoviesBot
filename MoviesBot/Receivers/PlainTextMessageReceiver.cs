@@ -118,6 +118,7 @@ namespace MoviesBot
 
             await Bot.SendMovieDataAsync(chosenMovie, message.From, cancellationToken);
 
+            Thread.Sleep(600);
 
             await Bot.SendHaveYouFindMovie(message.From, cancellationToken);         
 
