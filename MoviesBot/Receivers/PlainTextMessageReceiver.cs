@@ -49,12 +49,14 @@ namespace MoviesBot
             if(!Session.TryGetValue(userIdentity, out currentState))
             {
                 Console.WriteLine($"New user: {userIdentity}");
+                Session.Add(userIdentity, currentState);
             }
 
             switch (currentState)
             {
                 case State.Start:
                     await ProcessStartState(message, cancellationToken);
+                    Session[userIdentity] = State.RecommendMovie;
                     break;
                 case State.RecommendMovie:
                     await ProcessRecommendMovieState(message, cancellationToken);
