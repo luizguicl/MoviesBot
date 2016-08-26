@@ -109,8 +109,8 @@ namespace MoviesBot
 
             Top5Movies.TryGetValue(userIdentity, out userMovieList);
 
-            userMovieList.Where(m => m.id.ToString().Equals(option));
-            var chosenMovie = userMovieList.First();
+            var resultList = userMovieList.Where(m => m.id.ToString() == option);
+            var chosenMovie = resultList.First();
 
             await Bot.SendMovieDataAsync(chosenMovie, message.From, cancellationToken);
 

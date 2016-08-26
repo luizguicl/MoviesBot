@@ -51,16 +51,20 @@ namespace MoviesBot
             var select = new Select();
             select.Text = "Escolha uma das opções";
 
-            var options = new List<SelectOption>(); 
-               
+            var options = new List<SelectOption>();
+
+            var i = 0;
             foreach(Movie m in movieList)
             {
                 options.Add(new SelectOption
                 {
+                    Order = i++,
                     Text = m.title,
                     Value = new PlainText { Text = m.id.ToString() }
                 });
             }
+
+            options.Reverse();
 
             select.Options = options.ToArray();
 

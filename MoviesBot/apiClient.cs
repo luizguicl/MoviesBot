@@ -162,7 +162,7 @@ namespace MoviesBot
             string content = await response.Content.ReadAsStringAsync();
             var result = JsonConvert.DeserializeObject<MoviesResponse>(content);
 
-            return result.results.Take(5).OrderByDescending( r => r.vote_average).ToList();
+            return result.results.Take(5).ToList();
         }
 
         private string ToQueryString(NameValueCollection nvc)
