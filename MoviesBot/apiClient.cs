@@ -15,18 +15,11 @@ namespace MoviesBot
 {
     public class ApiClient
     {
-        private string _postReceivedUrl = "/handlers/external/received/";
-        private string _postSentUrl = "/handlers/external/sent/";
-        private string _postDeliveredUrl = "/handlers/external/delivered/";
-        private string _postFailedUrl = "/handlers/external/failed/";
-        private string _personUri = "search/person";
-        private string _movieUri = "search/movie";
-        private string _genreUri = "genre/{1}/movies?";
-        //private string _similarMoviesUri = "movie/{1}/similar?";
+        
+        private string _searchPersonUri = "search/person";
+        private string _searchMovieUri = "search/movie";
         private string _genreListUri = "genre/movie/list?";
         private string _topRatedMoviesUri = "movie/top_rated";
-
-
 
         private static HttpClient _client;
         private AppSettings _appSettings;
@@ -47,7 +40,7 @@ namespace MoviesBot
 
             var queryString = ToQueryString(parameters);
 
-            var response = await _client.GetAsync(string.Format("{0}{1}{2}", _appSettings.MovieDbBaseUrl, "search/person?", queryString));
+            var response = await _client.GetAsync(string.Format("{0}{1}{2}", _appSettings.MovieDbBaseUrl, _searchPersonUri, queryString));
 
             //will throw an exception if not successful
             response.EnsureSuccessStatusCode();
@@ -68,7 +61,7 @@ namespace MoviesBot
             var queryString = ToQueryString(parameters);
 
 
-            var response = await _client.GetAsync(string.Format("{0}{1}{2}", _appSettings.MovieDbBaseUrl, "search/movie?", queryString));
+            var response = await _client.GetAsync(string.Format("{0}{1}{2}", _appSettings.MovieDbBaseUrl, _searchMovieUri, queryString));
 
             //will throw an exception if not successful
             response.EnsureSuccessStatusCode();
@@ -90,7 +83,7 @@ namespace MoviesBot
 
             var queryString = ToQueryString(parameters);
             
-            var similarMovieUri = string.Format("movie/{0}/similar?", movieId);
+            var similarMovieUri = string.Format("movie/{0}/similar", movieId);
             var response = await _client.GetAsync(string.Format("{0}{1}{2}", _appSettings.MovieDbBaseUrl, similarMovieUri, queryString));
 
             //will throw an exception if not successful
@@ -135,7 +128,7 @@ namespace MoviesBot
             parameters.Add("page", "1");
 
             var queryString = ToQueryString(parameters);
-            var genreUri = string.Format("genre/{0}/movies?", genreId);
+            var genreUri = string.Format("genre/{0}/movies", genreId);
 
             var response = await _client.GetAsync(string.Format("{0}{1}{2}", _appSettings.MovieDbBaseUrl, genreUri, queryString));
 
