@@ -12,16 +12,17 @@ namespace MoviesBot
     public class PlainTextMessageReceiver : IMessageReceiver
     {
         private IDictionary<string, State> Session { get; }
-
+        private ApiClient _apiClient;
         private readonly IMessagingHubSender _sender;
 
         protected MoviesRecommendBot Bot { get; }
 
-        public PlainTextMessageReceiver(IMessagingHubSender sender)
+        public PlainTextMessageReceiver(IMessagingHubSender sender, AppSettings appSettings)
         {
             _sender = sender;
             Session = new Dictionary<string, State>();
             Bot = new MoviesRecommendBot(_sender);
+            _apiClient = new ApiClient(appSettings);
         }
 
         public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
@@ -127,14 +128,9 @@ namespace MoviesBot
 
         }
 
-        private Task ProcessTop5Command(string userIdentity, CancellationToken cancellationToken)
+        private async Task ProcessTop5Command(string userIdentity, CancellationToken cancellationToken)
         {
-
-            //TODO: Get top rated movies and send list to user
-
-
-
-            throw new NotImplementedException();
+            await _apiClient.GetTopRatedMovies();
         }
 
         private async Task ProcessStartState(string userIdentity, Message message, CancellationToken cancellationToken)

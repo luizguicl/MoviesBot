@@ -1,12 +1,15 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace MoviesBot
 {
@@ -21,6 +24,7 @@ namespace MoviesBot
         private string _genreUri = "genre/{1}/movies?";
         //private string _similarMoviesUri = "movie/{1}/similar?";
         private string _genreListUri = "genre/movie/list?";
+        private string _topRatedMoviesUri = "movie/top_rated";
 
 
 
@@ -130,6 +134,38 @@ namespace MoviesBot
             string content = await response.Content.ReadAsStringAsync();
 
             return await Task.Run(() => JObject.Parse(content));
+        }
+
+        //Busca 5 filmes mais bem avaliados do IMDB
+        public async Task<List<Movie>> GetTopRatedMovies()
+        {
+            NameValueCollection collection = new NameValueCollection();
+            collection.Add("api_key", _appSettings.ApiKey);
+            collection.Add("language", "pt-br");
+            collection.Add("page", "1");
+
+            var queryString = ToQueryString(collection);
+
+            var uri = string.Format("{0}{1}{2}", _appSettings.MovieDbBaseUrl, _topRatedMoviesUri, queryString);
+
+            var response = await _client.GetAsync(uri);
+
+            //will throw an exception if not successful
+            response.EnsureSuccessStatusCode();
+
+            string content = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<TopRatedMoviesResponse>(content);
+
+            return result.results.Take(5).ToList();
+        }
+
+        private string ToQueryString(NameValueCollection nvc)
+        {
+            var array = (from key in nvc.AllKeys
+                         from value in nvc.GetValues(key)
+                         select string.Format("{0}={1}", HttpUtility.UrlEncode(key), HttpUtility.UrlEncode(value)))
+                .ToArray();
+            return "?" + string.Join("&", array);
         }
     }
 }
