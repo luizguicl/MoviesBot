@@ -7,11 +7,11 @@
       "mediaType": "text/plain"
     }
   ],
-  "settingsType": "AppSettings",
   "settings": {
-    "movieDbBaseUrl": "http://api.themoviedb.org/3/",    
+    "movieDbBaseUrl": "http://api.themoviedb.org/3/",
     "apiKey": "d06f8520d5761365ae7da0475df9acfa"
   },
+  "settingsType": "AppSettings",
   "startupType": "Startup",
   "schemaVersion": 2
 }

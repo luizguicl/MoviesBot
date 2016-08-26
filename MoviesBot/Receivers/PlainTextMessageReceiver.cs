@@ -85,19 +85,23 @@ namespace MoviesBot
             return;
         }
 
-        private Task ProcessTop5OptionState(string userIdentity, Message message, CancellationToken cancellationToken)
+        private async Task ProcessTop5OptionState(string userIdentity, Message message, CancellationToken cancellationToken)
         {
             var option = message.Content.ToString().ToLower();
 
-            if (option.Equals("sim"))
+            if (option.ToLower().Equals(Constants.YES_OPTION))
             {
-                _sender.SendMessageAsync("Em desenvolvimento", message.From, cancellationToken);
+                await _sender.SendMessageAsync(Constants.FINAL_MESSAGE, message.From, cancellationToken);
+                Session[userIdentity] = State.Start;
             }
-            else
+            else if(option.ToLower().Equals(Constants.NO_OPTION))
             {
-                _sender.SendMessageAsync(Constants.FINAL_MESSAGE, message.From, cancellationToken);
-            }
-            throw new NotImplementedException();
+                await _sender.SendMessageAsync("Em breve", message.From, cancellationToken);                
+            }else
+            {
+                Session[userIdentity] = State.Start;
+            }                       
+
         }
 
         private async Task ProcessTop5State(string userIdentity, Message message, CancellationToken cancellationToken)
@@ -114,11 +118,10 @@ namespace MoviesBot
 
             await Bot.SendMovieDataAsync(chosenMovie, message.From, cancellationToken);
 
-            await _sender.SendMessageAsync(Constants.MOVIE_CHOSEN, message.From, cancellationToken);
+
+            await Bot.SendHaveYouFindMovie(message.From, cancellationToken);         
 
             Session[userIdentity] = State.Top5MoviesOption;
-
-            throw new NotImplementedException();
         }
 
         private async Task ProcessInitialMenuState(string userIdentity, Message message, CancellationToken cancellationToken)
@@ -151,13 +154,6 @@ namespace MoviesBot
         {
             await Bot.SendInitialMenuAsync(message.From, cancellationToken);
             Session[userIdentity] = State.InitialMenu;
-        }
-
-
-        private async Task ProcessRecommendMovieState(Message message, CancellationToken cancellationToken)
-        {
-            //TODO: 
-            await Bot.SendMovieRecommendationAsync(message.From, cancellationToken);
         }
 
     }

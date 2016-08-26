@@ -85,33 +85,36 @@ namespace MoviesBot
                 Type = mediaTypeLink,
                 PreviewType = mediaTypePreviewLink,
                 Size = 1,
-                Text = "Image Link"
+                Text = "Nota IMDB: " + movie.vote_average
             };
 
             await _sender.SendMessageAsync(mediaLink, from, cancellationToken);
         }
 
-
-        public async Task SendMovieRecommendationAsync(Node from, CancellationToken cancellationToken)
+        public async Task SendHaveYouFindMovie(Node from, CancellationToken cancellationToken)
         {
-            var uriLink = new Uri("https://i.ytimg.com/vi/KGMqe7_8ORI/maxresdefault.jpg");
-            var uriPreviewLink = new Uri("http://thumbs.dreamstime.com/x/funny-vision-test-21065231.jpg");
-            var mediaTypeLink = new MediaType(MediaType.DiscreteTypes.Image, MediaType.SubTypes.JPeg);
-            var mediaTypePreviewLink = new MediaType(MediaType.DiscreteTypes.Image, MediaType.SubTypes.JPeg);
-
-            var mediaLink = new MediaLink
+            var select = new Select
             {
-                Uri = uriLink,
-                PreviewUri = uriPreviewLink,
-                Type = mediaTypeLink,
-                PreviewType = mediaTypePreviewLink,
-                Size = 1,
-                Text = "Image Link"
+                Text = Constants.MOVIE_CHOSEN,
+                Options = new[]
+               {
+                    new SelectOption
+                    {
+                        Order = 1,
+                        Text = Constants.YES_OPTION,
+                        Value = new PlainText { Text = Constants.YES_OPTION}
+                    },
+                    new SelectOption
+                    {
+                        Order = 2,
+                        Text = Constants.NO_OPTION,
+                        Value = new PlainText { Text = Constants.NO_OPTION}
+                    }
+
+                }
             };
 
-            await _sender.SendMessageAsync(mediaLink, from, cancellationToken);
+            await _sender.SendMessageAsync(select, from, cancellationToken);
         }
-
-
     }
 }

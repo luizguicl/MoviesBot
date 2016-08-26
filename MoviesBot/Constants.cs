@@ -22,6 +22,8 @@ namespace MoviesBot
         public const string SHOW_TOP_5_OPTION = "Ver TOP 5";
         public const string RECEIVE_SUGGESTION_OPTION = "Receber sugestão";
         public const string CHOOSE_GENRE_OPTION = "Escolher gênero";
+        public const string YES_OPTION= "sim";
+        public const string NO_OPTION = "nao";
 
         //Commands
         public const string SHOW_TOP_5_COMMAND = "/showTop5";
