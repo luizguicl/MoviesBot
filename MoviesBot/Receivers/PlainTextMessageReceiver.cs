@@ -32,8 +32,11 @@ namespace MoviesBot
 
         public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
         {
+            string userIdentity = message.From.Name;
+
             try
             {
+               
                 await ProcessMessagesAsync(_sender, message, cancellationToken);
 
                 Console.WriteLine($"From: {message.From} \tContent: {message.Content}");
@@ -42,6 +45,7 @@ namespace MoviesBot
             catch (Exception e)
             {
                 Console.WriteLine($"Exception processing message: {e}");
+                Session[userIdentity] = State.Start;
                 await _sender.SendMessageAsync(@"Ops. :(", message.From, cancellationToken);
             }
         }
@@ -125,7 +129,7 @@ namespace MoviesBot
             {
                 await ProcessTop5Command(userIdentity, message.From, cancellationToken);
                 Session[userIdentity] = State.Top5Movies;
-
+                return;
             }
             
 
@@ -137,8 +141,8 @@ namespace MoviesBot
         private async Task ProcessTop5Command(string userIdentity, Node from, CancellationToken cancellationToken)
         {
             var movieList = await _apiClient.GetTopRatedMovies();
-
-            //Top5Movies.Add(userIdentity, movieList);
+        
+            Top5Movies.Add(userIdentity, movieList);
             
             await Bot.SendTop5MoviesAsync(movieList, from, cancellationToken);
         }

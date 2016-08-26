@@ -13,7 +13,7 @@ namespace MoviesBot
 
         public const string ERROR_MESSAGE = "Você pode refazer a sua busca? Quero te ajudar, mas não entendi o que você precisa!";
 
-        public const string MOVIE_CHOSEN = "Você já encontrou o seu filme? Se SIM, maravilha! Se NÃO, envie o nome do ator, diretor o gênero ou ano de lançamento do filme.";
+        public const string MOVIE_CHOSEN = "Você já encontrou o seu filme? Se SIM, maravilha! Se NÃO, envie o gênero do filme.";
 
         public const string FINAL_MESSAGE = "Hora de pegar a pipoca. Aproveite o filme e depois volte para conferir as novidades. :(";
 

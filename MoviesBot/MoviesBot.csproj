@@ -77,8 +77,11 @@
     <Compile Include="apiClient.cs" />
     <Compile Include="AppSettings.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Movie.cs" />
-    <Compile Include="Models\TopRatedMoviesResponse.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\MoviesResponse.cs" />
+    <Compile Include="Models\PersonResponse.cs" />
     <Compile Include="MoviesRecommendBot.cs" />
     <Compile Include="Receivers\PlainTextMessageReceiver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

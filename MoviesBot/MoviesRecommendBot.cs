@@ -57,7 +57,7 @@ namespace MoviesBot
             {
                 options.Add(new SelectOption
                 {
-                    Text = m.original_title,
+                    Text = m.title,
                     Value = new PlainText { Text = m.id.ToString() }
                 });
             }

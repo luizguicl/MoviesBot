@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MoviesBot
 {
-    public class TopRatedMoviesResponse
+    public class MoviesResponse
     {
         public int page { get; set; }
         public List<Movie> results { get; set; }
