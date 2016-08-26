@@ -145,8 +145,11 @@ namespace MoviesBot
         private async Task ProcessTop5Command(string userIdentity, Node from, CancellationToken cancellationToken)
         {
             var movieList = await _apiClient.GetTopRatedMovies();
-        
-            Top5Movies.Add(userIdentity, movieList);
+
+            if (!Top5Movies.ContainsKey(userIdentity))
+            {
+                Top5Movies.Add(userIdentity, movieList);
+            }
             
             await Bot.SendTop5MoviesAsync(movieList, from, cancellationToken);
         }
