@@ -1,0 +1,1473 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Lime.Messaging</name>
+    </assembly>
+    <members>
+        <member name="T:Lime.Messaging.Contents.BitmapImage">
+            <summary>
+            Represents a flat text content
+            </summary>
+        </member>
+        <member name="M:Lime.Messaging.Contents.BitmapImage.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lime.Messaging.Contents.BitmapImage"/> class.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Contents.BitmapImage.Image">
+            <summary>
+            The bitmap image
+            </summary>
+        </member>
+        <member name="M:Lime.Messaging.Contents.BitmapImage.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="M:Lime.Messaging.Contents.BitmapImage.Parse(System.String)">
+            <summary>
+            Parses the string to a 
+            PlainText instance.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Lime.Messaging.Contents.ChatState">
+            <summary>
+            Allows the chat clients to exchange information about conversation events.
+            </summary>
+        </member>
+        <member name="M:Lime.Messaging.Contents.ChatState.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lime.Messaging.Contents.ChatState"/> class.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Contents.ChatState.State">
+            <summary>
+            Gets or sets the chat state.
+            </summary>
+            <value>
+            The state.
+            </value>
+        </member>
+        <member name="M:Lime.Messaging.Contents.ChatState.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="T:Lime.Messaging.Contents.ChatStateEvent">
+            <summary>
+            The current chat state.
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Contents.ChatStateEvent.Starting">
+            <summary>
+            The other chat party started 
+            a new chat a conversation.
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Contents.ChatStateEvent.Composing">
+            <summary>
+            The other party is typing.
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Contents.ChatStateEvent.Paused">
+            <summary>
+            The other party was 
+            typing but stopped.
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Contents.ChatStateEvent.Deleting">
+            <summary>
+            The other party is 
+            deleting a text.
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Contents.ChatStateEvent.Gone">
+            <summary>
+            The other party 
+            left the conversation.
+            </summary>
+        </member>
+        <member name="T:Lime.Messaging.Contents.DocumentSelect">
+            <summary>
+            Aggregates a list of <see cref="T:Lime.Messaging.Contents.DocumentSelectOption"/> for selection.
+            This class is similar to the <see cref="T:Lime.Messaging.Contents.Select"/>, but allows generic documents to be defined in the select header and options, instead of plain text.
+            </summary>
+            <seealso cref="T:Lime.Protocol.Document" />
+        </member>
+        <member name="M:Lime.Messaging.Contents.DocumentSelect.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lime.Messaging.Contents.DocumentSelect"/> class.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Contents.DocumentSelect.Scope">
+            <summary>
+            Gets or sets the scope which the select options is valid.
+            This property hints to the destination of the select when the sender is able to receive and understand a select option reply.
+            </summary>
+            <value>
+            The scope.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.DocumentSelect.Header">
+            <summary>
+            Gets or sets the select header document.
+            </summary>
+            <value>
+            The header.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.DocumentSelect.Options">
+            <summary>
+            Gets or sets the available select options.
+            </summary>
+            <value>
+            The options.
+            </value>
+        </member>
+        <member name="T:Lime.Messaging.Contents.DocumentSelectOption">
+            <summary>
+            Defines a option to be selected by the destination.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Contents.DocumentSelectOption.Order">
+            <summary>
+            Gets or sets the option order number.
+            </summary>
+            <value>
+            The order.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.DocumentSelectOption.Label">
+            <summary>
+            Gets or sets the option label document.
+            </summary>
+            <value>
+            The label.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.DocumentSelectOption.Value">
+            <summary>
+            Gets or sets the option value to be returned to the caller.
+            If not defined, no value should be returned.
+            </summary>
+            <value>
+            The value.
+            </value>
+        </member>
+        <member name="T:Lime.Messaging.Contents.Invoice">
+            <summary>
+            Represents an invoice for requesting a payment.
+            </summary>
+            <seealso cref="T:Lime.Protocol.Document" />
+        </member>
+        <member name="M:Lime.Messaging.Contents.Invoice.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lime.Messaging.Contents.Invoice"/> class.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Contents.Invoice.Created">
+            <summary>
+            Gets or sets the invoice creation date.
+            </summary>
+            <value>
+            The creation date.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.Invoice.DueTo">
+            <summary>
+            Gets or sets the invoice expiration.
+            </summary>
+            <value>
+            The expiration date.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.Invoice.Methods">
+            <summary>
+            Gets or sets the seller supported methods for payment of the invoice.
+            </summary>
+            <value>
+            The payment methods.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.Invoice.Currency">
+            <summary>
+            Gets or sets the invoice currency code related to the values.
+            </summary>
+            <value>
+            The currency.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.Invoice.Taxes">
+            <summary>
+            Gets or sets the invoice total taxes value.
+            </summary>
+            <value>
+            The taxes.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.Invoice.Total">
+            <summary>
+            Gets or sets the invoice total value, including taxes.
+            </summary>
+            <value>
+            The total.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.Invoice.Items">
+            <summary>
+            Gets or sets the invoice items.
+            </summary>
+            <value>
+            The items.
+            </value>
+        </member>
+        <member name="T:Lime.Messaging.Contents.InvoiceItem">
+            <summary>
+            Defines a invoice item.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Contents.InvoiceItem.Quantity">
+            <summary>
+            Gets or sets the item quantity.
+            </summary>
+            <value>
+            The quantity.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.InvoiceItem.Unit">
+            <summary>
+            Gets or sets the unit value of each item.
+            </summary>
+            <value>
+            The unit.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.InvoiceItem.Currency">
+            <summary>
+            Gets or sets the item currency code related to the values.
+            </summary>
+            <value>
+            The currency.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.InvoiceItem.Taxes">
+            <summary>
+            Gets or sets the taxes values for the item.
+            </summary>
+            <value>
+            The taxes.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.InvoiceItem.Total">
+            <summary>
+            Gets or sets the total value of the items, including taxes.
+            </summary>
+            <value>
+            The total.
+            </value>
+        </member>
+        <member name="T:Lime.Messaging.Contents.InvoiceStatus">
+            <summary>
+            Represents the status of the payment of an invoice.
+            </summary>
+            <seealso cref="T:Lime.Protocol.Document" />
+        </member>
+        <member name="M:Lime.Messaging.Contents.InvoiceStatus.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lime.Messaging.Contents.InvoiceStatus"/> class.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Contents.InvoiceStatus.Status">
+            <summary>
+            Gets or sets the current invoice status.
+            </summary>
+            <value>
+            The status.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.InvoiceStatus.Date">
+            <summary>
+            Gets or sets the status date.
+            </summary>
+            <value>
+            The date.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.InvoiceStatus.Code">
+            <summary>
+            Gets or sets the status transaction code.
+            </summary>
+            <value>
+            The code.
+            </value>
+        </member>
+        <member name="T:Lime.Messaging.Contents.InvoiceStatusStatus">
+            <summary>
+            Defines the possible invoice payment status values.
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Contents.InvoiceStatusStatus.Completed">
+            <summary>
+            Indicates that the payment operation was complete.
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Contents.InvoiceStatusStatus.Cancelled">
+            <summary>
+            Indicates that the payment operation was cancelled by any of the parties.
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Contents.InvoiceStatusStatus.Refunded">
+            <summary>
+            Indicates that a previously completed payment operation was refunded to the payer.
+            </summary>
+        </member>
+        <member name="T:Lime.Messaging.Contents.Item">
+            <summary>
+            Defines an item description.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Contents.Item.Description">
+            <summary>
+            Gets or sets the product description.
+            </summary>
+            <value>
+            The description.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.Item.ImageUri">
+            <summary>
+            Gets or sets the image URI.
+            </summary>
+            <value>
+            The image URI.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.Item.ImageType">
+            <summary>
+            Gets or sets the type of the image.
+            </summary>
+            <value>
+            The type of the image.
+            </value>
+        </member>
+        <member name="T:Lime.Messaging.Contents.Link">
+            <summary>
+            Defines a base class for link documents.
+            </summary>
+            <seealso cref="T:Lime.Protocol.Document" />
+        </member>
+        <member name="M:Lime.Messaging.Contents.Link.#ctor(Lime.Protocol.MediaType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lime.Messaging.Contents.Link"/> class.
+            </summary>
+            <param name="mediaType">Type of the media.</param>
+        </member>
+        <member name="P:Lime.Messaging.Contents.Link.Uri">
+            <summary>
+            Gets or sets the link URI.
+            </summary>
+            <value>
+            The URI.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.Link.PreviewUri">
+            <summary>
+            Gets or sets the link preview URI. 
+            It can be used to provide a preview of a website page or media, like a thumbnail image.
+            </summary>
+            <value>
+            The thumbnail URI.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.Link.PreviewType">
+            <summary>
+            Gets or sets the type of the link preview.
+            </summary>
+            <value>
+            The type of the thumbnail.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.Link.Title">
+            <summary>
+            Gets or sets the link title text.
+            </summary>
+            <value>
+            The text.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.Link.Text">
+            <summary>
+            Gets or sets the link description text.
+            </summary>
+            <value>
+            The text.
+            </value>
+        </member>
+        <member name="M:Lime.Messaging.Contents.Link.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="T:Lime.Messaging.Contents.Location">
+            <summary>
+            Represents a geographic location information.
+            </summary>
+            <seealso cref="T:Lime.Protocol.Document" />
+        </member>
+        <member name="M:Lime.Messaging.Contents.Location.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lime.Messaging.Contents.Location"/> class.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Contents.Location.Latitude">
+            <summary>
+            Gets or sets the latitude, in degrees.
+            Latitude can range from -90.0 to 90.0. Latitude is measured in degrees north or south from the equator. Positive values are north of the equator and negative values are south of the equator.        
+            </summary>
+            <value>
+            The latitude.
+            </value>
+            <seealso cref="!:https://msdn.microsoft.com/en-us/library/system.device.location.geocoordinate.latitude(v=vs.110).aspx"/>
+            <seealso cref="!:https://en.wikipedia.org/wiki/Geographic_coordinate_system"/>
+        </member>
+        <member name="P:Lime.Messaging.Contents.Location.Longitude">
+            <summary>
+            Gets or sets the longitude, in degrees.
+            The longitude can range from -180.0 to 180.0. Longitude is measured in degrees east or west of the prime meridian. Negative values are west of the prime meridian, and positive values are east of the prime meridian.
+            </summary>
+            <value>
+            The longitude.
+            </value>
+            <seealso cref="!:https://msdn.microsoft.com/en-us/library/system.device.location.geocoordinate.longitude(v=vs.110).aspx"/>
+            <seealso cref="!:https://en.wikipedia.org/wiki/Geographic_coordinate_system"/>
+        </member>
+        <member name="P:Lime.Messaging.Contents.Location.Altitude">
+            <summary>
+            Gets or sets the altitude, in meters.
+            </summary>
+            <value>
+            The altitude.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.Location.Course">
+            <summary>
+            Gets or sets the course, in degrees.
+            The course can range from 0 to 360.
+            </summary>
+            <value>
+            The course.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.Location.Speed">
+            <summary>
+            Gets or sets the speed, in meters per second.
+            </summary>
+            <value>
+            The speed.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.Location.Accuracy">
+            <summary>
+            Gets or sets the location accuracy, in meters.
+            </summary>
+            <value>
+            The accuracy.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.Location.Text">
+            <summary>
+            Gets or sets the location description text.
+            </summary>
+            <value>
+            The text.
+            </value>
+        </member>
+        <member name="T:Lime.Messaging.Contents.PaymentMethod">
+            <summary>
+            Defines a payment method.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Contents.PaymentMethod.Name">
+            <summary>
+            Gets or sets the payment method name.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.PaymentMethod.Account">
+            <summary>
+            Gets or sets the payment method account information of the seller.
+            </summary>
+            <value>
+            The account.
+            </value>
+        </member>
+        <member name="T:Lime.Messaging.Contents.WebLink">
+            <summary>
+            Represents an external link to a website page.
+            </summary>
+            <seealso cref="T:Lime.Protocol.Document" />
+        </member>
+        <member name="M:Lime.Messaging.Contents.WebLink.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lime.Messaging.Contents.WebLink"/> class.
+            </summary>
+        </member>
+        <member name="T:Lime.Messaging.Contents.MediaLink">
+            <summary>
+            Represents an external link to a media content.
+            </summary>
+            <seealso cref="T:Lime.Protocol.Document" />
+        </member>
+        <member name="M:Lime.Messaging.Contents.MediaLink.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lime.Messaging.Contents.MediaLink"/> class.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Contents.MediaLink.Type">
+            <summary>
+            Gets or sets the media type of the linked media.
+            </summary>
+            <value>
+            The type.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.MediaLink.Size">
+            <summary>
+            Gets or sets the media size, in bytes.
+            </summary>
+            <value>
+            The size.
+            </value>
+        </member>
+        <member name="T:Lime.Messaging.Contents.PaymentReceipt">
+            <summary>
+            Defines a receipt for an invoice payment.
+            </summary>
+            <seealso cref="T:Lime.Protocol.Document" />
+        </member>
+        <member name="M:Lime.Messaging.Contents.PaymentReceipt.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lime.Messaging.Contents.PaymentReceipt"/> class.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Contents.PaymentReceipt.Method">
+            <summary>
+            Gets or sets the payment method used in the payment.
+            </summary>
+            <example>Credit card</example>
+            <example>Cash</example>
+            <value>
+            The payment method.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.PaymentReceipt.Code">
+            <summary>
+            Gets or sets the payment transaction code generated by the processor.
+            </summary>
+            <value>
+            The number.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.PaymentReceipt.PaidOn">
+            <summary>
+            Gets or sets the payment date.
+            </summary>
+            <value>
+            The creation.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.PaymentReceipt.Currency">
+            <summary>
+            Gets or sets the receipt currency code related to the values.
+            </summary>
+            <value>
+            The currency.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.PaymentReceipt.Taxes">
+            <summary>
+            Gets or sets the receipt total taxes value.
+            </summary>
+            <value>
+            The taxes.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.PaymentReceipt.Total">
+            <summary>
+            Gets or sets the receipt total value, including taxes.
+            </summary>
+            <value>
+            The total.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.PaymentReceipt.Items">
+            <summary>
+            Gets or sets the invoice items.
+            </summary>
+            <value>
+            The items.
+            </value>
+        </member>
+        <member name="T:Lime.Messaging.Contents.PlainText">
+            <summary>
+            Represents a flat text content
+            </summary>
+        </member>
+        <member name="M:Lime.Messaging.Contents.PlainText.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lime.Messaging.Contents.PlainText"/> class.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Contents.PlainText.Text">
+            <summary>
+            Text of the message
+            </summary>
+        </member>
+        <member name="M:Lime.Messaging.Contents.PlainText.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="M:Lime.Messaging.Contents.PlainText.Parse(System.String)">
+            <summary>
+            Parses the string to a 
+            PlainText instance.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Lime.Messaging.Contents.Select">
+            <summary>
+            Aggregates a list of <see cref="T:Lime.Messaging.Contents.SelectOption"/> for selection.
+            </summary>
+            <seealso cref="T:Lime.Protocol.Document" />
+        </member>
+        <member name="M:Lime.Messaging.Contents.Select.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lime.Messaging.Contents.Select"/> class.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Contents.Select.Scope">
+            <summary>
+            Gets or sets the scope which the select options is valid.
+            This property hints to the destination of the select when the sender is able to receive and understand a select option reply.
+            </summary>
+            <value>
+            The scope.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.Select.Text">
+            <summary>
+            Gets or sets the select question text.
+            </summary>
+            <value>
+            The text.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.Select.Options">
+            <summary>
+            Gets or sets the available select options.
+            </summary>
+            <value>
+            The options.
+            </value>
+        </member>
+        <member name="T:Lime.Messaging.Contents.SelectScope">
+            <summary>
+            Defines the scope which a select is valid.
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Contents.SelectScope.Transient">
+            <summary>
+            The select is transient and its valid during a temporary conversation scope.
+            This is the default scope.
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Contents.SelectScope.Persistent">
+            <summary>
+            The select is persistent and its valid in any time for the specific sender.
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Contents.SelectScope.Immediate">
+            <summary>
+            The select is valid only valid for the current scope.
+            </summary>
+        </member>
+        <member name="T:Lime.Messaging.Contents.SelectOption">
+            <summary>
+            Defines a option to be selected by the destination.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Contents.SelectOption.Order">
+            <summary>
+            Gets or sets the option order number.
+            </summary>
+            <value>
+            The order.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.SelectOption.Text">
+            <summary>
+            Gets or sets the option label text.
+            </summary>
+            <value>
+            The text.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Contents.SelectOption.Type">
+            <summary>
+            Gets the media type of the option <see cref="P:Lime.Messaging.Contents.SelectOption.Value"/>.
+            </summary>
+            <value>
+            The type.
+            </value>        
+        </member>
+        <member name="P:Lime.Messaging.Contents.SelectOption.Value">
+            <summary>
+            Gets or sets the option value to be returned to the caller.
+            If not defined, the value of <see cref="P:Lime.Messaging.Contents.SelectOption.Order"/> (if defined) or <see cref="P:Lime.Messaging.Contents.SelectOption.Text"/> should be returned.
+            </summary>
+            <value>
+            The value.
+            </value>
+        </member>
+        <member name="T:Lime.Messaging.Resources.Account">
+            <summary>
+            Represents an user account information.
+            </summary>
+        </member>
+        <member name="M:Lime.Messaging.Resources.Account.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lime.Messaging.Resources.Account"/> class.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Account.FullName">
+            <summary>
+            The user full name.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Account.Address">
+            <summary>
+            The user street address.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Account.City">
+            <summary>
+            The user city.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Account.Email">
+            <summary>
+            The user e-mail address.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Account.PhoneNumber">
+            <summary>
+            The user phone number.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Account.PhotoUri">
+            <summary>
+            The user photo URI.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Account.CellPhoneNumber">
+            <summary>
+            The user cellphone number
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Account.IsTemporary">
+            <summary>
+            Indicates that the account is temporary is valid only in the current session.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Account.Password">
+            <summary>
+            Base64 representation of the account password.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Account.OldPassword">
+            <summary>
+            Base64 representation of the account password. 
+            Mandatory in case of updating account password.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Account.AccessKey">
+            <summary>
+            Access key for updating the account without knowing the old password.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Account.InboxSize">
+            <summary>
+            Size of account inbox for storing offline messages.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Account.AllowAnonymousSender">
+            <summary>
+            Indicates if this account allows receive messages from anonymous users.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Account.AllowUnknownSender">
+            <summary>
+            Indicates if this account allows receive messages from users that are not in the account contact list.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Account.StoreMessageContent">
+            <summary>
+            Indicates if the content of messages from this account should be stored in the server. 
+            Note that for offline messages, this will always happens.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Account.AlternativeAccount">
+            <summary>
+            Alternative account address.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Account.PublishToDirectory">
+            <summary>
+            Indicates if the account info should be published to the domain directory.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Account.Gender">
+            <summary>
+            Represents the person account gender.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Account.Timezone">
+            <summary>
+            Represents the account timezone relative to GMT.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Account.Culture">
+            <summary>
+            Represents the person account culture info, in the IETF language tag format.
+            <a href="https://en.wikipedia.org/wiki/IETF_language_tag"/>.
+            </summary>
+        </member>
+        <member name="T:Lime.Messaging.Resources.Gender">
+            <summary>
+            Represents the account person gender
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.Gender.Male">
+            <summary>
+            The male gender
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.Gender.Female">
+            <summary>
+            The female gender
+            </summary>
+        </member>
+        <member name="T:Lime.Messaging.Resources.Capability">
+            <summary>
+            Represents the capabilities
+            of the nodes of the network
+            </summary>
+        </member>
+        <member name="M:Lime.Messaging.Resources.Capability.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lime.Messaging.Resources.Capability"/> class.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Capability.ContentTypes">
+            <summary>
+            Indicates the message content types
+            that the session node is able to handle.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Capability.ResourceTypes">
+            <summary>
+            Indicates the command resource types 
+            that the session node is able to handle.
+            </summary>
+        </member>
+        <member name="T:Lime.Messaging.Resources.Contact">
+            <summary>
+            Represents a contact information.
+            </summary>
+        </member>
+        <member name="M:Lime.Messaging.Resources.Contact.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lime.Messaging.Resources.Contact"/> class.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Contact.Identity">
+            <summary>
+            The identity of the contact, 
+            in the name@domain format.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Contact.Name">
+            <summary>
+            The name of the contact. 
+            This information is only visible by the roster owner.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Contact.IsPending">
+            <summary>
+            Determines if the contact is pending for 
+            acceptance by the roster owner. 
+            The default value is false.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Contact.SharePresence">
+            <summary>
+            Indicates if the roster owner wants to share 
+            presence information with the contact. If true, 
+            the server provides a get delegation permission 
+            to the contact identity into the roster owner 
+            presence resource. The default value is true.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Contact.ShareAccountInfo">
+            <summary>
+            Indicates if the roster owner wants to share account 
+            information with the contact. If true, the server provides 
+            a get delegation permission to the contact identity 
+            into the roster owner account resource. 
+            The default value is true.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Contact.Priority">
+            <summary>
+            Indicates the contact priority.
+            </summary>
+            <value>
+            The priority.
+            </value>
+        </member>
+        <member name="M:Lime.Messaging.Resources.Contact.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Lime.Messaging.Resources.Contact.Equals(System.Object)" -->
+        <member name="M:Lime.Messaging.Resources.Contact.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+            </returns>
+        </member>
+        <member name="T:Lime.Messaging.Resources.Delegation">
+            <summary>
+            Represents a delegation to send envelopes on behalf of another node. 
+            The delegation can be constrained to specific envelope types and specific details.
+            </summary>
+        </member>
+        <member name="M:Lime.Messaging.Resources.Delegation.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lime.Messaging.Resources.Delegation"/> class.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Delegation.Target">
+            <summary>
+            Gets or sets the target node which will receive the delegation.
+            </summary>
+            <value>
+            The target.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Delegation.EnvelopeTypes">
+            <summary>
+            Gets or sets the envelope types for delegation.
+            If none is specified, indicates that all envelope types should be delegated.
+            </summary>
+            <value>
+            The envelope types.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Delegation.Messages">
+            <summary>
+            Message constraints for delegation. 
+            If not present, the delegation is given without any restriction for the <see cref="T:Lime.Protocol.Message"/> envelope type.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Delegation.Notifications">
+            <summary>
+            Notification constraints for delegation. 
+            If not present, the delegation is given without any restriction for the <see cref="T:Lime.Protocol.Notification"/> envelope type.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Delegation.Commands">
+            <summary>
+            Command constraints for delegation. 
+            If not present, the delegation is given without any restriction for the <see cref="T:Lime.Protocol.Command"/> envelope type.
+            </summary>
+        </member>
+        <member name="T:Lime.Messaging.Resources.DelegationMessage">
+            <summary>
+            Represents <see cref="T:Lime.Protocol.Message"/> delegation constraints.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.DelegationMessage.Type">
+            <summary>
+            Gets or sets the message type for delegation.
+            </summary>
+            <value>
+            The type.
+            </value>
+        </member>
+        <member name="T:Lime.Messaging.Resources.DelegationNotification">
+            <summary>
+            Represents <see cref="T:Lime.Protocol.Notification"/> delegation constraints.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.DelegationNotification.Event">
+            <summary>
+            Gets or sets the event type for delegation.
+            </summary>
+            <value>
+            The event.
+            </value>
+        </member>
+        <member name="T:Lime.Messaging.Resources.DelegationCommand">
+            <summary>
+            Represents <see cref="T:Lime.Protocol.Command"/> delegation constraints.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.DelegationCommand.Method">
+            <summary>
+            Gets or sets the method for delegation.
+            If not present, The delegation is given for any method in the specified URI.
+            </summary>
+            <value>
+            The method.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Resources.DelegationCommand.Uri">
+            <summary>
+            Gets or sets the resource URI fo delegation.
+            </summary>
+            <value>
+            The URI.
+            </value>
+        </member>
+        <member name="P:Lime.Messaging.Resources.DelegationCommand.Status">
+            <summary>
+            Gets or sets the comand status for delegation.
+            If not present, The delegation is given for any status in the specified URI.
+            </summary>
+            <value>
+            The status.
+            </value>
+        </member>
+        <member name="T:Lime.Messaging.Resources.Group">
+            <summary>
+            Allows the nodes to manage the groups that they owns or participates.
+            </summary>
+        </member>
+        <member name="M:Lime.Messaging.Resources.Group.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lime.Messaging.Resources.Group"/> class.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Group.Identity">
+            <summary>
+            Identity of the group, in the group-id@groups.domain.com format. 
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Group.Name">
+            <summary>
+            Name of the group.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Group.Type">
+            <summary>
+            Type of the group.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Group.PhotoUri">
+            <summary>
+            The group photo URI.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Group.Creator">
+            <summary>
+            The group creator identity.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Group.Created">
+            <summary>
+            The group creation date.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Group.MembersUri">
+            <summary>
+            Members uri of the contact group. 
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.GroupType.Temporary">
+            <summary>
+            The group exists while the owner session that created it is active. 
+            This type of group is useful for mass message sending, since the groups 
+            application is optimized to send large amounts of messages. 
+            The temporary groups are private.
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.GroupType.Private">
+            <summary>
+            The group is not discoverable and someone 
+            can join only if is invited by owner or a moderator.
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.GroupType.Public">
+            <summary>
+            Any authenticated node in the domain can join the group.
+            </summary>
+        </member>
+        <member name="T:Lime.Messaging.Resources.GroupMember">
+            <summary>
+            Represents a member of a group.
+            </summary>
+        </member>
+        <member name="M:Lime.Messaging.Resources.GroupMember.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lime.Messaging.Resources.GroupMember"/> class.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.GroupMember.Address">
+            <summary>
+            The address of the member, in the name@domain/instance format,
+            being the instance information optional.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.GroupMember.Role">
+            <summary>
+            The role of the identity in the group. 
+            </summary>
+        </member>
+        <member name="T:Lime.Messaging.Resources.GroupMemberRole">
+            <summary>
+            Enumerates the roles that the members 
+            can have in a group.
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.GroupMemberRole.Member">
+            <summary>
+            The member can send and receive 
+            messages to the group. 
+            It's the default value.
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.GroupMemberRole.Listener">
+            <summary>
+            The member can only receive messages 
+            from the group, and doesn't have permission to send.
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.GroupMemberRole.Moderator">
+            <summary>
+            The member can send and receive messages to 
+            the group and can kick and 
+            ban contacts from it.
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.GroupMemberRole.Owner">
+            <summary>
+            The owner have the permission to manage moderators, 
+            change and delete the group.
+            </summary>
+        </member>
+        <member name="T:Lime.Messaging.Resources.Ping">
+            <summary>
+            Allows the nodes to test 
+            the network connectivity.
+            </summary>
+        </member>
+        <member name="M:Lime.Messaging.Resources.Ping.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lime.Messaging.Resources.Ping"/> class.
+            </summary>
+        </member>
+        <member name="T:Lime.Messaging.Resources.Presence">
+            <summary>
+            Represents the availability status of a node in a network. 
+            A node can only receive envelopes from another nodes in the network if it sets its presence to an available status (except from the server, who always knows if a node is available or node, since this information is enforced by the existing session). 
+            In a new session, the node starts with an unavailable status.
+            </summary>
+        </member>
+        <member name="M:Lime.Messaging.Resources.Presence.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lime.Messaging.Resources.Presence"/> class.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Presence.Status">
+            <summary>
+            The node presence status.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Presence.Message">
+            <summary>
+            A status message associated to the presence status.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Presence.RoutingRule">
+            <summary>
+            Rule to the server route envelopes addressed to the identity. 
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Presence.LastSeen">
+            <summary>
+            The date of the last known presence status for the node.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Presence.Priority">
+            <summary>
+            The value of the priority of the presence.
+            This value can affect the way the envelopes are routed to the current session.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Presence.FilterByDistance">
+            <summary>
+            If true, indicates that the delivery of envelopes for the current session should only occurs if the distance from the originator is the smallest among the resolved routes with this setting. 
+            This configuration is not exclusive, so if there's more than one route with the same smallest distance, these sessions should receive the envelopes.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Presence.RoundRobin">
+            <summary>
+            If true, indicates that the delivery of envelopes for the current session should be distributed by using the round-robin strategy between the resolved routes with this setting.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Presence.Instances">
+            <summary>
+            Present instances for a identity.
+            </summary>
+        </member>
+        <member name="T:Lime.Messaging.Resources.RoutingRule">
+            <summary>
+            Defines the envelope routing rules.
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.RoutingRule.Instance">
+            <summary>
+            Only deliver envelopes addressed to the current session instance (name@domain/instance).
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.RoutingRule.Identity">
+            <summary>
+            Deliver envelopes addressed to the current session instance (name@domain/instance) and to the identity (name@domain).
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.RoutingRule.IdentityByDistance">
+            <summary>
+            Deliver envelopes addressed to the current session instance (name@domain/instance) and to the identity (name@domain) 
+            if the distance from the originator is the smallest among the available nodes of the identity with this setting.
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.RoutingRule.Promiscuous">
+            <summary>
+            Deliver any envelopes addressed to the identity name@domain, including the envelopes addressed to any specific instance.
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.RoutingRule.Domain">
+            <summary>
+            Deliver envelopes addressed to the current session instance (name@domain/instance) and to the node domain.
+            This rule is intended to be used only by sessions authenticated as <see cref="F:Lime.Protocol.Security.DomainRole.Authority"/>.
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.RoutingRule.DomainByDistance">
+            <summary>
+            Deliver envelopes addressed to the current session  instance (name@domain/instance) and to the node domain
+            if the distance from the originator is the smallest among the available  nodes of the domain with this setting.
+            This rule is intended to be used only by sessions authenticated as <see cref="F:Lime.Protocol.Security.DomainRole.Authority"/>.
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.RoutingRule.RootDomain">
+            <summary>
+            Deliver envelopes addressed to the current session instance (name@domain/instance), to the node domain and all its sub domains.
+            This rule is intended to be used only by sessions authenticated as <see cref="F:Lime.Protocol.Security.DomainRole.RootAuthority"/>.
+            </summary>
+        </member>
+        <member name="T:Lime.Messaging.Resources.PresenceStatus">
+            <summary>
+            Possible presence status values
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.PresenceStatus.Unavailable">
+            <summary>
+            The node is not available for messaging and should not receive any envelope by any node, except by the connected server.
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.PresenceStatus.Available">
+            <summary>
+            The node is available for messaging and envelopes can be routed to the node according to the defined routing rule.
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.PresenceStatus.Busy">
+            <summary>
+            The node is available but the senders should notice that it is busy and doesn't want to the disturbed 
+            or it is on heavy load and don't want to receive any envelope.
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.PresenceStatus.Away">
+            <summary>
+            The node is available but the senders should notice that it may not be reading or processing the received envelopes.
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.PresenceStatus.Invisible">
+            <summary>
+            The node is available for messaging but the actual stored presence value is unavailable.
+            </summary>
+        </member>
+        <member name="T:Lime.Messaging.Resources.Quota">
+            <summary>
+            Allows the nodes to manage the 
+            session envelope quota configuration.
+            </summary>
+        </member>
+        <member name="M:Lime.Messaging.Resources.Quota.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lime.Messaging.Resources.Quota"/> class.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Quota.Threshold">
+            <summary>
+            The number of envelopes that the node
+            can originate in the current session.       
+            If the value is 0 or is
+            not defined, this limit is unbounded. 
+            If a session exceeds the limit, it can be finished by the server.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Quota.Throughput">
+            <summary>
+            Indicates the cap of envelopes per second that the 
+            session can send and receive. If the value is 0 or is
+            not defined, this capability is unbounded. 
+            If a session exceeds the limit, it can be finished by the server.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Quota.MaxEnvelopeSize">
+            <summary>
+            The uncompressed size limit of the envelopes that 
+            can be sent in the session. If the value is 0 or is 
+            not defined, this capability is unbounded. 
+            If a envelope sent in the session exceeds the limit, it can be finished 
+            by the server.
+            </summary>
+        </member>
+        <member name="T:Lime.Messaging.Resources.Receipt">
+            <summary>
+            Represents the message events 
+            that should generate receipts 
+            (notifications) for the node in the 
+            current session.
+            </summary>
+        </member>
+        <member name="M:Lime.Messaging.Resources.Receipt.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Lime.Messaging.Resources.Receipt"/> class.
+            </summary>
+        </member>
+        <member name="P:Lime.Messaging.Resources.Receipt.Events">
+            <summary>
+            Indicates which message events 
+            that the node is receiving
+            in the current session.
+            </summary>
+        </member>
+        <member name="T:Lime.Messaging.Resources.UriTemplates">
+            <summary>
+            Stores the Uri templates
+            for the common protocol resources
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.UriTemplates.ACCOUNT">
+            <summary>
+            Template for the
+            account resource
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.UriTemplates.PRESENCE">
+            <summary>
+            Template for the
+            presence resource
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.UriTemplates.CONTACTS">
+            <summary>
+            Template for the
+            contacts resource
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.UriTemplates.CONTACT">
+            <summary>
+            Template for a
+            specific contact resource
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.UriTemplates.GROUPS">
+            <summary>
+            Template for the
+            groups resource
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.UriTemplates.GROUP">
+            <summary>
+            Template for a
+            specific group resource
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.UriTemplates.GROUP_MEMBERS">
+            <summary>
+            Template for a
+            specific group members
+            resource
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.UriTemplates.GROUP_MEMBER">
+            <summary>
+            Template for a 
+            specific group member
+            resource
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.UriTemplates.GROUP_MEMBER_INSTANCE">
+            <summary>
+            Template for a 
+            specific group member
+            resource
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.UriTemplates.PING">
+            <summary>
+            Template for the
+            ping resource
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.UriTemplates.RECEIPT">
+            <summary>
+            Template for the
+            receipt resource
+            </summary>
+        </member>
+        <member name="F:Lime.Messaging.Resources.UriTemplates.QUOTA">
+            <summary>
+            Template for the
+            quota resource.
+            </summary>
+        </member>
+    </members>
+</doc>
