@@ -2,7 +2,7 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <StartAction>Program</StartAction>
-    <StartProgram>C:\Users\luizg\Source\Repos\MoviesBot\packages\Takenet.MessagingHub.Client.Template.0.3.131\tools\net461\mhh.exe</StartProgram>
+    <StartProgram>D:\Projetos\MoviesBot\MoviesBot\bin\Debug\mhh.exe</StartProgram>
     <RemoteDebugEnabled>false</RemoteDebugEnabled>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
